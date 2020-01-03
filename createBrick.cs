@@ -1,3 +1,8 @@
+if ( !isObject (BuildableSnowBrickset) )
+{
+	new SimSet (BuildableSnowBrickset);
+}
+
 // Creates snow brick at a position and adds it to the grid.
 //
 // @param {integer} x
