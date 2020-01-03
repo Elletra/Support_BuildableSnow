@@ -16,17 +16,30 @@ function BuildableSnow_InitGrid ( %width, %length, %height )
 		{
 			for ( %z = 0;  %z < $BuildableSnow::Grid::Height;  %z++ )
 			{
-				%brick = BuildableSnow_CreateSnowBrick (%x, %y, %z);
-
-				if ( %z == 0 )
-				{
-					%brick.setSnowVertices (1, 1, 1, 1);
-				}
-
-				%brick.updateSnow ();
+				BuildableSnow_PlaceGridBrick (%x, %y, %z);
 			}
 		}
 	}
+}
+
+// @param {integer} x
+// @param {integer} y
+// @param {integer} z
+//
+// @returns {fxDTSBrick|-1} Returns -1 if no brick created.
+//
+function BuildableSnow_PlaceGridBrick ( %x, %y, %z )
+{
+	%brick = BuildableSnow_CreateSnowBrick (%x, %y, %z);
+
+	if ( %z == 0 )
+	{
+		%brick.setSnowVertices (1, 1, 1, 1);
+	}
+
+	%brick.updateSnow ();
+
+	return %brick;
 }
 
 // @param {integer} x
