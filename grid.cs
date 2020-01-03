@@ -110,7 +110,7 @@ function fxDTSBrick::hasSnowNeighbor ( %this, %x, %y, %z )
 //
 // @returns {boolean}
 //
-function fxDTSBrick::hasEmptySpot ( %this, %x, %y, %z )
+function fxDTSBrick::hasEmptySnowSpot ( %this, %x, %y, %z )
 {
 	%gridX = %this.gridX;
 	%gridY = %this.gridY;

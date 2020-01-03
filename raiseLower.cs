@@ -5,7 +5,7 @@ function fxDTSBrick::lowerSnow ( %this )
 	%y = %this.gridY;
 	%z = %this.gridZ;
 
-	if ( !%this.hasEmptySpot (0, 0, 1) )
+	if ( !%this.hasEmptySnowSpot (0, 0, 1) )
 	{
 		return;
 	}
@@ -13,7 +13,7 @@ function fxDTSBrick::lowerSnow ( %this )
 	%this.setSnowVertices (0, 0, 0, 0);
 
 	%this.updateSnow ();
-	%this.updateNeighbors ();
+	%this.updateSnowNeighbors ();
 }
 
 // Flattens brick if it's not already, and raises snow brick above it if it is.
@@ -24,7 +24,7 @@ function fxDTSBrick::raiseSnow ( %this )
 	%z = %this.gridZ;
 
 	// Don't raise snow if there's no brick below it (and we're not on the ground).
-	if ( %z > 0  &&  %this.hasEmptySpot (0, 0, -1) )
+	if ( %z > 0  &&  %this.hasEmptySnowSpot (0, 0, -1) )
 	{
 		return;
 	}
@@ -40,5 +40,5 @@ function fxDTSBrick::raiseSnow ( %this )
 	%this.setSnowVertices (1, 1, 1, 1);
 
 	%this.updateSnow ();
-	%this.updateNeighbors ();
+	%this.updateSnowNeighbors ();
 }

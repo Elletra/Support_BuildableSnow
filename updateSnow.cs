@@ -1,5 +1,5 @@
 // Update adjacent neighbor snow bricks.
-function fxDTSBrick::updateNeighbors ( %this )
+function fxDTSBrick::updateSnowNeighbors ( %this )
 {
 	%x = %this.gridX;
 	%y = %this.gridY;
@@ -113,7 +113,7 @@ function fxDTSBrick::updateSnow ( %this )
 	//
 	// (Though there is an exception, which is explained below.)
 	//
-	%canUpdate = %this.hasEmptySpot (0, 0, 1)  ||  !isObject (%aboveSnow);
+	%canUpdate = %this.hasEmptySnowSpot (0, 0, 1)  ||  !isObject (%aboveSnow);
 
 	%data = $BuildableSnow::DataBlocks_[1, 1, 1, 1];
 
