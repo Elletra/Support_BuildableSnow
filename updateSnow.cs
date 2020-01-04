@@ -20,14 +20,15 @@ function fxDTSBrick::updateSnowNeighbors ( %this )
 }
 
 // Checks if a brick can be set to an adapter datablock, based on two adjacent neighbors relative
-// to the direction of the adapter's slope.  If either of the neighbors is a middle snow brick,
-// we can't change it.
+// to the direction of the adapter's slope.  If either of the neighbors is a middle snow brick or
+// a ramp facing the wrong way, we can't change it.
 //
 // This function is a total hack just to make everything look less ugly.
 //
 // Basically, we want bricks under corner slopes to become adapters because it looks nicer.
 // However, it looks hideous when middle snow bricks are on either side of the adapter, so this is
-// a special function to make sure that this doesn't happen.
+// a special function to make sure that this doesn't happen.  It also prevents the brick from
+// changing if there are surrounding ramps facing the wrong way.
 //
 // @param {fxDTSBrickData} data - The adapter datablock we want to set this brick to.
 //
@@ -84,7 +85,7 @@ function fxDTSBrick::snowAdapterCheck ( %this, %data )
 			return false;
 		}
 
-		// We'll only allow adjacent ramps if they're facing the right way.
+		// Check if neighbor is a ramp brick that's facing the wrong way.
 		if ( %checkDB.snowBrickType $= "ramp"  &&  %checkDB.getID () != %ramp[%i].getID () )
 		{
 			return false;
@@ -128,7 +129,7 @@ function fxDTSBrick::updateSnow ( %this )
 
 	// As explained in the fxDTSBrick::snowAdapterCheck method, we want bricks under corner slopes
 	// to become adapters because it looks nicer.  However, this is only if said brick is not
-	// surrounded by middle bricks, otherwise that would look hideous.
+	// surrounded by middle bricks or ramps facing the wrong way, otherwise that would look hideous.
 	//
 	if ( isObject (%aboveSnow)  &&  %aboveSnow.dataBlock.snowBrickType $= "corner" )
 	{
