@@ -87,10 +87,9 @@ function fxDTSBrick::snowAdapterCheck ( %this, %data )
 			continue;
 		}
 
-		%checkDB  = %checkBrick.dataBlock;
-		%vertices = %checkDB.snowVertices;
+		%checkDB = %checkBrick.dataBlock;
 
-		if ( !%checkDB.isSnowBrick  ||  getWord (%vertices, %emptyVert[%i]) != 0 )
+		if ( !%checkDB.isSnowBrick  ||  getWord (%checkDB.snowVertices, %emptyVert[%i]) != 0 )
 		{
 			return false;
 		}
