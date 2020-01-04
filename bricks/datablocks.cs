@@ -140,10 +140,6 @@ datablock fxDTSBrickData (brick_snow_top_left_adapter_data)
 	isSnowBrick   = true;
 	snowBrickType = "adapter";
 	snowVertices  = "0 1 1 1";
-
-	// Valid adjacent ramps.
-	snowRampX = brick_snow_top_middle_data;
-	snowRampY = brick_snow_middle_left_data;
 };
 
 datablock fxDTSBrickData (brick_snow_top_right_adapter_data)
@@ -157,10 +153,6 @@ datablock fxDTSBrickData (brick_snow_top_right_adapter_data)
 	isSnowBrick   = true;
 	snowBrickType = "adapter";
 	snowVertices  = "1 0 1 1";
-
-	// Valid adjacent ramps.
-	snowRampX = brick_snow_top_middle_data;
-	snowRampY = brick_snow_middle_right_data;
 };
 
 datablock fxDTSBrickData (brick_snow_bottom_left_adapter_data)
@@ -174,10 +166,6 @@ datablock fxDTSBrickData (brick_snow_bottom_left_adapter_data)
 	isSnowBrick   = true;
 	snowBrickType = "adapter";
 	snowVertices  = "1 1 0 1";
-
-	// Valid adjacent ramps.
-	snowRampX = brick_snow_bottom_middle_data;
-	snowRampY = brick_snow_middle_left_data;
 };
 
 datablock fxDTSBrickData (brick_snow_bottom_right_adapter_data)
@@ -191,10 +179,6 @@ datablock fxDTSBrickData (brick_snow_bottom_right_adapter_data)
 	isSnowBrick   = true;
 	snowBrickType = "adapter";
 	snowVertices  = "1 1 1 0";
-
-	// Valid adjacent ramps.
-	snowRampX = brick_snow_bottom_middle_data;
-	snowRampY = brick_snow_middle_right_data;
 };
 
 datablock fxDTSBrickData (brick_snow_top_left_bottom_right_data)
