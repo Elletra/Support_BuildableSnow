@@ -21,23 +21,6 @@ function fxDTSBrick::raiseSnow ( %this )
 
 	%z = %this.gridZ;
 
-	// Don't raise snow if there's no brick below it, provided we're not on the ground.
-	if ( %z > 0  &&  %this.hasEmptySnowSpot (0, 0, -1) )
-	{
-		return;
-	}
-
-	// Raise snow above if this brick is flat.
-	if ( %this.dataBlock $= $BuildableSnow::DataBlock_[1, 1, 1, 1] )
-	{
-		%aboveSnow = %this.getSnowNeighbor (0, 0, 1);
-
-		if ( isObject (%aboveSnow) )
-		{
-			%aboveSnow.raiseSnow ();
-		}
-	}
-
 	//* Make sure the surrounding bricks below it even exist to support raising it. *//
 
 	for ( %w = -1;  %w <= 1;  %w++ )
@@ -48,6 +31,17 @@ function fxDTSBrick::raiseSnow ( %this )
 			{
 				return;
 			}
+		}
+	}
+
+	// Raise snow above if this brick is flat.
+	if ( %this.dataBlock $= $BuildableSnow::DataBlock_[1, 1, 1, 1] )
+	{
+		%aboveSnow = %this.getSnowNeighbor (0, 0, 1);
+
+		if ( isObject (%aboveSnow) )
+		{
+			%aboveSnow.raiseSnow ();
 		}
 	}
 
