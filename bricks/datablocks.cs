@@ -10,6 +10,7 @@ datablock fxDTSBrickData (brick_snow_empty_data)
 
 	isSnowBrick   = true;
 	snowBrickType = "empty";
+	snowVertices  = "0 0 0 0";
 };
 
 datablock fxDTSBrickData (brick_snow_top_left_data)
@@ -22,6 +23,7 @@ datablock fxDTSBrickData (brick_snow_top_left_data)
 
 	isSnowBrick   = true;
 	snowBrickType = "corner";
+	snowVertices  = "0 0 0 1";
 };
 
 datablock fxDTSBrickData (brick_snow_top_middle_data)
@@ -34,6 +36,7 @@ datablock fxDTSBrickData (brick_snow_top_middle_data)
 
 	isSnowBrick   = true;
 	snowBrickType = "ramp";
+	snowVertices  = "0 0 1 1";
 };
 
 datablock fxDTSBrickData (brick_snow_top_right_data)
@@ -46,6 +49,7 @@ datablock fxDTSBrickData (brick_snow_top_right_data)
 
 	isSnowBrick   = true;
 	snowBrickType = "corner";
+	snowVertices  = "0 0 1 0";
 };
 
 datablock fxDTSBrickData (brick_snow_middle_left_data)
@@ -58,6 +62,7 @@ datablock fxDTSBrickData (brick_snow_middle_left_data)
 
 	isSnowBrick   = true;
 	snowBrickType = "ramp";
+	snowVertices  = "0 1 0 1";
 };
 
 datablock fxDTSBrickData (brick_snow_middle_middle_data)
@@ -69,6 +74,7 @@ datablock fxDTSBrickData (brick_snow_middle_middle_data)
 
 	isSnowBrick   = true;
 	snowBrickType = "middle";
+	snowVertices  = "1 1 1 1";
 };
 
 datablock fxDTSBrickData (brick_snow_middle_right_data)
@@ -81,6 +87,7 @@ datablock fxDTSBrickData (brick_snow_middle_right_data)
 
 	isSnowBrick   = true;
 	snowBrickType = "ramp";
+	snowVertices  = "1 0 1 0";
 };
 
 datablock fxDTSBrickData (brick_snow_bottom_left_data)
@@ -93,6 +100,7 @@ datablock fxDTSBrickData (brick_snow_bottom_left_data)
 
 	isSnowBrick   = true;
 	snowBrickType = "corner";
+	snowVertices  = "0 1 0 0";
 };
 
 datablock fxDTSBrickData (brick_snow_bottom_middle_data)
@@ -105,6 +113,7 @@ datablock fxDTSBrickData (brick_snow_bottom_middle_data)
 
 	isSnowBrick   = true;
 	snowBrickType = "ramp";
+	snowVertices  = "1 1 0 0";
 };
 
 datablock fxDTSBrickData (brick_snow_bottom_right_data)
@@ -117,6 +126,7 @@ datablock fxDTSBrickData (brick_snow_bottom_right_data)
 
 	isSnowBrick   = true;
 	snowBrickType = "corner";
+	snowVertices  = "1 0 0 0";
 };
 
 datablock fxDTSBrickData (brick_snow_top_left_adapter_data)
@@ -129,8 +139,11 @@ datablock fxDTSBrickData (brick_snow_top_left_adapter_data)
 
 	isSnowBrick   = true;
 	snowBrickType = "adapter";
-	snowRampX     = brick_snow_top_middle_data;
-	snowRampY     = brick_snow_middle_left_data;
+	snowVertices  = "0 1 1 1";
+
+	// Valid adjacent ramps.
+	snowRampX = brick_snow_top_middle_data;
+	snowRampY = brick_snow_middle_left_data;
 };
 
 datablock fxDTSBrickData (brick_snow_top_right_adapter_data)
@@ -143,8 +156,11 @@ datablock fxDTSBrickData (brick_snow_top_right_adapter_data)
 
 	isSnowBrick   = true;
 	snowBrickType = "adapter";
-	snowRampX     = brick_snow_top_middle_data;
-	snowRampY     = brick_snow_middle_right_data;
+	snowVertices  = "1 0 1 1";
+
+	// Valid adjacent ramps.
+	snowRampX = brick_snow_top_middle_data;
+	snowRampY = brick_snow_middle_right_data;
 };
 
 datablock fxDTSBrickData (brick_snow_bottom_left_adapter_data)
@@ -157,8 +173,11 @@ datablock fxDTSBrickData (brick_snow_bottom_left_adapter_data)
 
 	isSnowBrick   = true;
 	snowBrickType = "adapter";
-	snowRampX     = brick_snow_bottom_middle_data;
-	snowRampY     = brick_snow_middle_left_data;
+	snowVertices  = "1 1 0 1";
+
+	// Valid adjacent ramps.
+	snowRampX = brick_snow_bottom_middle_data;
+	snowRampY = brick_snow_middle_left_data;
 };
 
 datablock fxDTSBrickData (brick_snow_bottom_right_adapter_data)
@@ -171,8 +190,11 @@ datablock fxDTSBrickData (brick_snow_bottom_right_adapter_data)
 
 	isSnowBrick   = true;
 	snowBrickType = "adapter";
-	snowRampX     = brick_snow_bottom_middle_data;
-	snowRampY     = brick_snow_middle_right_data;
+	snowVertices  = "1 1 1 0";
+
+	// Valid adjacent ramps.
+	snowRampX = brick_snow_bottom_middle_data;
+	snowRampY = brick_snow_middle_right_data;
 };
 
 datablock fxDTSBrickData (brick_snow_top_left_bottom_right_data)
@@ -185,6 +207,7 @@ datablock fxDTSBrickData (brick_snow_top_left_bottom_right_data)
 
 	isSnowBrick   = true;
 	snowBrickType = "doubleRamp";
+	snowVertices  = "0 1 1 0";
 };
 
 datablock fxDTSBrickData (brick_snow_top_right_bottom_left_data)
@@ -197,4 +220,5 @@ datablock fxDTSBrickData (brick_snow_top_right_bottom_left_data)
 
 	isSnowBrick   = true;
 	snowBrickType = "doubleRamp";
+	snowVertices  = "1 0 0 1";
 };
