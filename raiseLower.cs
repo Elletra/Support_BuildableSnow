@@ -21,12 +21,6 @@ function fxDTSBrick::lowerSnow ( %this )
 //
 function fxDTSBrick::raiseSnow ( %this )
 {
-	// Don't raise snow if there's a brick above it.
-	if ( !%this.hasEmptySnowSpot (0, 0, 1) )
-	{
-		return $BuildableSnow::Error::HasSnowAbove;
-	}
-
 	//* Make sure the surrounding bricks below even exist to support raising it. *//
 
 	%z = %this.snowGridZ;
@@ -54,7 +48,16 @@ function fxDTSBrick::raiseSnow ( %this )
 	}
 
 	%this.setSnowVertices (1, 1, 1, 1);
-	%this.updateSnow ();
+
+	if ( %this.hasEmptySnowSpot (0, 0, 1) )
+	{
+		%this.updateSnow ();
+	}
+	else
+	{
+		// We can only update the neighbors if there's a snow brick above.
+		%this.updateSnowNeighbors ();
+	}
 
 	return $BuildableSnow::Error::None;
 }
