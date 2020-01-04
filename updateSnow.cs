@@ -105,17 +105,12 @@ function fxDTSBrick::updateSnow ( %this )
 		return $BuildableSnow::Error::NotSnowBrick;
 	}
 
-	%left   = %this.snowVertexLeft;
-	%right  = %this.snowVertexRight;
-	%top    = %this.snowVertexTop;
-	%bottom = %this.snowVertexBottom;
+	%vertices = %this.getSnowVertices ();
 
-	%z = %this.snowGridZ;
-
-	%topLeft     = $BuildableSnow::Grid::Vertex_[%left,  %top,    %z];
-	%topRight    = $BuildableSnow::Grid::Vertex_[%right, %top,    %z];
-	%bottomLeft  = $BuildableSnow::Grid::Vertex_[%left,  %bottom, %z];
-	%bottomRight = $BuildableSnow::Grid::Vertex_[%right, %bottom, %z];
+	%topLeft     = getWord (%vertices, 0);
+	%topRight    = getWord (%vertices, 1);
+	%bottomLeft  = getWord (%vertices, 2);
+	%bottomRight = getWord (%vertices, 3);
 
 	%aboveSnow = %this.getSnowNeighbor (0, 0, 1);
 
@@ -134,8 +129,8 @@ function fxDTSBrick::updateSnow ( %this )
 	//
 	if ( isObject (%aboveSnow)  &&  %aboveSnow.dataBlock.snowBrickType $= "corner" )
 	{
-		%vertices = strReplace (%aboveSnow.getSnowVertices (), " ", "_");
-		%adapter  = $BuildableSnow::CornerToAdapter_[%vertices];
+		%aboveVertices = strReplace (%aboveSnow.getSnowVertices (), " ", "_");
+		%adapter       = $BuildableSnow::CornerToAdapter_[%aboveVertices];
 
 		if ( %this.snowAdapterCheck (%adapter) )
 		{
@@ -157,7 +152,7 @@ function fxDTSBrick::updateSnow ( %this )
 		%this.updateSnowNeighbors ();
 
 		// Update snow brick below (if there is one).
-		if ( %z > 0 )
+		if ( %this.snowGridZ > 0 )
 		{
 			%this.getSnowNeighbor (0, 0, -1).updateSnow ();
 		}
