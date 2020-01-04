@@ -64,6 +64,9 @@ function fxDTSBrick::snowAdapterCheck ( %this, %data )
 	%neighbor0 = %this.getSnowNeighbor (%coordX, 0, 0);
 	%neighbor1 = %this.getSnowNeighbor (0, %coordY, 0);
 
+	%ramp0 = %data.snowRampX;
+	%ramp1 = %data.snowRampY;
+
 	for ( %i = 0;  %i < 2;  %i++ )
 	{
 		%checkBrick = %neighbor[%i];
@@ -77,6 +80,12 @@ function fxDTSBrick::snowAdapterCheck ( %this, %data )
 
 		// Check if neighbor is a middle brick.
 		if ( %checkDB $= $BuildableSnow::DataBlocks_[1, 1, 1, 1] )
+		{
+			return false;
+		}
+
+		// We'll only allow adjacent ramps if they're facing the right way.
+		if ( %checkDB.snowBrickType $= "ramp"  &&  %checkDB.getID () != %ramp[%i].getID () )
 		{
 			return false;
 		}
@@ -121,7 +130,7 @@ function fxDTSBrick::updateSnow ( %this )
 	// to become adapters because it looks nicer.  However, this is only if said brick is not
 	// surrounded by middle bricks, otherwise that would look hideous.
 	//
-	if ( isObject (%aboveSnow)  &&  %aboveSnow.dataBlock.isSnowCorner )
+	if ( isObject (%aboveSnow)  &&  %aboveSnow.dataBlock.snowBrickType $= "corner" )
 	{
 		%vertices = strReplace (%aboveSnow.getSnowVertices (), " ", "_");
 		%adapter  = $BuildableSnow::CornerToAdapter_[%vertices];
