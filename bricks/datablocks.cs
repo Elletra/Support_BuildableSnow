@@ -129,8 +129,8 @@ datablock fxDTSBrickData (brick_snow_top_left_adapter_data)
 
 	isSnowBrick   = true;
 	snowBrickType = "adapter";
-	snowRampX     = $BuildableSnow::DataBlocks_[0, 0, 1, 1];
-	snowRampY     = $BuildableSnow::DataBlocks_[0, 1, 0, 1];
+	snowRampX     = brick_snow_top_middle_data;
+	snowRampY     = brick_snow_middle_left_data;
 };
 
 datablock fxDTSBrickData (brick_snow_top_right_adapter_data)
@@ -143,8 +143,8 @@ datablock fxDTSBrickData (brick_snow_top_right_adapter_data)
 
 	isSnowBrick   = true;
 	snowBrickType = "adapter";
-	snowRampX     = $BuildableSnow::DataBlocks_[0, 0, 1, 1];
-	snowRampY     = $BuildableSnow::DataBlocks_[1, 0, 1, 0];
+	snowRampX     = brick_snow_top_middle_data;
+	snowRampY     = brick_snow_middle_right_data;
 };
 
 datablock fxDTSBrickData (brick_snow_bottom_left_adapter_data)
@@ -157,8 +157,8 @@ datablock fxDTSBrickData (brick_snow_bottom_left_adapter_data)
 
 	isSnowBrick   = true;
 	snowBrickType = "adapter";
-	snowRampX     = $BuildableSnow::DataBlocks_[1, 1, 0, 0];
-	snowRampY     = $BuildableSnow::DataBlocks_[0, 1, 0, 1];
+	snowRampX     = brick_snow_bottom_middle_data;
+	snowRampY     = brick_snow_middle_left_data;
 };
 
 datablock fxDTSBrickData (brick_snow_bottom_right_adapter_data)
@@ -171,8 +171,8 @@ datablock fxDTSBrickData (brick_snow_bottom_right_adapter_data)
 
 	isSnowBrick   = true;
 	snowBrickType = "adapter";
-	snowRampX     = $BuildableSnow::DataBlocks_[1, 1, 0, 0];
-	snowRampY     = $BuildableSnow::DataBlocks_[1, 0, 1, 0];
+	snowRampX     = brick_snow_bottom_middle_data;
+	snowRampY     = brick_snow_middle_right_data;
 };
 
 datablock fxDTSBrickData (brick_snow_top_left_bottom_right_data)
