@@ -1,9 +1,9 @@
 // Update adjacent neighbor snow bricks.
 function fxDTSBrick::updateSnowNeighbors ( %this )
 {
-	for ( %w = -1;  %w < 2;  %w++ )
+	for ( %w = -1;  %w <= 1;  %w++ )
 	{
-		for ( %l = -1;  %l < 2;  %l++ )
+		for ( %l = -1;  %l <= 1;  %l++ )
 		{
 			%neighbor = %this.getSnowNeighbor (%w, %l, 0);
 
