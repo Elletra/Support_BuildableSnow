@@ -32,7 +32,7 @@ function fxDTSBrick::raiseSnow ( %this )
 	%aboveSnow = %this.getSnowNeighbor (0, 0, 1);
 
 	// This is so we can actually plant snow on top of other snow, provided it's flat.
-	if ( %this.dataBlock $= $BuildableSnow::DataBlocks_[1, 1, 1, 1]  &&  isObject (%aboveSnow) )
+	if ( %this.dataBlock $= $BuildableSnow::DataBlock_[1, 1, 1, 1]  &&  isObject (%aboveSnow) )
 	{
 		if ( %aboveSnow.hasEmptySnowSpot (0, 0, 1) )
 		{

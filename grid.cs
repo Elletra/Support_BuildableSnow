@@ -55,9 +55,9 @@ function BuildableSnow_GetBrick ( %x, %y, %z )
 //
 function BuildableSnow_GridToWorld ( %x, %y, %z )
 {
-	%sizeX = $BuildableSnow::DataBlocks_[1, 1, 1, 1].brickSizeX;
-	%sizeY = $BuildableSnow::DataBlocks_[1, 1, 1, 1].brickSizeY;
-	%sizeZ = $BuildableSnow::DataBlocks_[1, 1, 1, 1].brickSizeZ;
+	%sizeX = $BuildableSnow::DataBlock_[1, 1, 1, 1].brickSizeX;
+	%sizeY = $BuildableSnow::DataBlock_[1, 1, 1, 1].brickSizeY;
+	%sizeZ = $BuildableSnow::DataBlock_[1, 1, 1, 1].brickSizeZ;
 
 	%worldX = -(%x * (%sizeX / 2));
 	%worldY =  (%y * (%sizeY / 2));
@@ -118,7 +118,7 @@ function fxDTSBrick::hasEmptySnowSpot ( %this, %x, %y, %z )
 
 	if ( isObject (%neighbor) )
 	{
-		return %neighbor.dataBlock $= $BuildableSnow::DataBlocks_[0, 0, 0, 0];
+		return %neighbor.dataBlock $= $BuildableSnow::DataBlock_[0, 0, 0, 0];
 	}
 
 	return true;

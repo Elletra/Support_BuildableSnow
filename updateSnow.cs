@@ -39,22 +39,22 @@ function fxDTSBrick::snowAdapterCheck ( %this, %data )
 	switch$ ( %data )
 	{
 		// Top left adapter
-		case $BuildableSnow::DataBlocks_[0, 1, 1, 1]:
+		case $BuildableSnow::DataBlock_[0, 1, 1, 1]:
 			%coordX = -1;
 			%coordY = -1;
 
 		// Top right adapter
-		case $BuildableSnow::DataBlocks_[1, 0, 1, 1]:
+		case $BuildableSnow::DataBlock_[1, 0, 1, 1]:
 			%coordX =  1;
 			%coordY = -1;
 
 		// Bottom left adapter
-		case $BuildableSnow::DataBlocks_[1, 1, 0, 1]:
+		case $BuildableSnow::DataBlock_[1, 1, 0, 1]:
 			%coordX = -1;
 			%coordY =  1;
 
 		// Bottom right adapter
-		case $BuildableSnow::DataBlocks_[1, 1, 1, 0]:
+		case $BuildableSnow::DataBlock_[1, 1, 1, 0]:
 			%coordX = 1;
 			%coordY = 1;
 
@@ -80,7 +80,7 @@ function fxDTSBrick::snowAdapterCheck ( %this, %data )
 		%checkDB = %checkBrick.dataBlock;
 
 		// Check if neighbor is a middle brick.
-		if ( %checkDB $= $BuildableSnow::DataBlocks_[1, 1, 1, 1] )
+		if ( %checkDB $= $BuildableSnow::DataBlock_[1, 1, 1, 1] )
 		{
 			return false;
 		}
@@ -125,7 +125,7 @@ function fxDTSBrick::updateSnow ( %this )
 	//
 	%canUpdate = %this.hasEmptySnowSpot (0, 0, 1)  ||  !isObject (%aboveSnow);
 
-	%data = $BuildableSnow::DataBlocks_[1, 1, 1, 1];
+	%data = $BuildableSnow::DataBlock_[1, 1, 1, 1];
 
 	// As explained in the fxDTSBrick::snowAdapterCheck method, we want bricks under corner slopes
 	// to become adapters because it looks nicer.  However, this is only if said brick is not
@@ -143,7 +143,7 @@ function fxDTSBrick::updateSnow ( %this )
 	}
 	else if ( %canUpdate )
 	{
-		%data = $BuildableSnow::DataBlocks_[%topLeft, %topRight, %bottomLeft, %bottomRight];
+		%data = $BuildableSnow::DataBlock_[%topLeft, %topRight, %bottomLeft, %bottomRight];
 	}
 
 	%this.setDataBlock (%data);
@@ -154,6 +154,6 @@ function fxDTSBrick::updateSnow ( %this )
 		%this.getSnowNeighbor (0, 0, -1).updateSnow ();
 	}
 
-	%this.setColliding (%data !$= $BuildableSnow::DataBlocks_[0, 0, 0, 0]);
-	%this.setRayCasting (%data !$= $BuildableSnow::DataBlocks_[0, 0, 0, 0]);
+	%this.setColliding (%data !$= $BuildableSnow::DataBlock_[0, 0, 0, 0]);
+	%this.setRayCasting (%data !$= $BuildableSnow::DataBlock_[0, 0, 0, 0]);
 }

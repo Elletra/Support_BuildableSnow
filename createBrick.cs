@@ -13,7 +13,7 @@ if ( !isObject (BuildableSnowBrickset) )
 //
 function BuildableSnow_CreateSnowBrick ( %x, %y, %z )
 {
-	%data     = $BuildableSnow::DataBlocks_[1, 1, 1, 1];
+	%data     = $BuildableSnow::DataBlock_[1, 1, 1, 1];
 	%position = BuildableSnow_GridToWorld (%x, %y, %z);
 	%angleID  = $BuildableSnow::SnowAngleID;
 	%color    = $BuildableSnow::SnowColor;
