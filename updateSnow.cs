@@ -94,11 +94,15 @@ function fxDTSBrick::snowAdapterCheck ( %this, %data )
 	return true;
 }
 
+// Updates snow brick datablock and, if needed, surrounding neighbors.
+//
+// @returns {BuildableSnowError}
+//
 function fxDTSBrick::updateSnow ( %this )
 {
 	if ( !%this.dataBlock.isSnowBrick )
 	{
-		return;
+		return $BuildableSnow::Error::NotSnowBrick;
 	}
 
 	%left   = %this.gridVertexLeft;
@@ -161,4 +165,6 @@ function fxDTSBrick::updateSnow ( %this )
 
 	%this.setColliding (%data !$= $BuildableSnow::DataBlock_[0, 0, 0, 0]);
 	%this.setRayCasting (%data !$= $BuildableSnow::DataBlock_[0, 0, 0, 0]);
+
+	return $BuildableSnow::Error::None;
 }

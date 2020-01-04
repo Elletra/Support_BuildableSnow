@@ -1,22 +1,30 @@
 // Lowers snow, provided there's no snow above this brick.
+//
+// @returns {BuildableSnowError}
+//
 function fxDTSBrick::lowerSnow ( %this )
 {
 	if ( !%this.hasEmptySnowSpot (0, 0, 1) )
 	{
-		return;
+		return $BuildableSnow::Error::HasSnowAbove;
 	}
 
 	%this.setSnowVertices (0, 0, 0, 0);
 	%this.updateSnow ();
+
+	return $BuildableSnow::Error::None;
 }
 
 // Flattens brick if it's not already, and raises snow brick above it if it is.
+//
+// @returns {BuildableSnowError}
+//
 function fxDTSBrick::raiseSnow ( %this )
 {
 	// Don't raise snow if there's a brick above it.
 	if ( !%this.hasEmptySnowSpot (0, 0, 1) )
 	{
-		return;
+		return $BuildableSnow::Error::HasSnowAbove;
 	}
 
 	%z = %this.gridZ;
@@ -29,7 +37,7 @@ function fxDTSBrick::raiseSnow ( %this )
 		{
 			if ( %z > 0  &&  %this.hasEmptySnowSpot (%w, %l, -1) )
 			{
-				return;
+				return $BuildableSnow::Error::NoSnowBelow;
 			}
 		}
 	}
@@ -47,4 +55,6 @@ function fxDTSBrick::raiseSnow ( %this )
 
 	%this.setSnowVertices (1, 1, 1, 1);
 	%this.updateSnow ();
+
+	return $BuildableSnow::Error::None;
 }

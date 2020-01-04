@@ -3,11 +3,13 @@
 // @param {0|1} bottomLeft
 // @param {0|1} bottomRight
 //
+// @returns {BuildableSnowError}
+//
 function fxDTSBrick::setSnowVertices ( %this, %topLeft, %topRight, %bottomLeft, %bottomRight )
 {
 	if ( !%this.dataBlock.isSnowBrick )
 	{
-		return;
+		return $BuildableSnow::Error::NotSnowBrick;
 	}
 
 	%left   = %this.gridVertexLeft;
@@ -23,10 +25,12 @@ function fxDTSBrick::setSnowVertices ( %this, %topLeft, %topRight, %bottomLeft, 
 	$BuildableSnow::Grid::Vertex_[%right, %top,    %z] = %topRight;
 	$BuildableSnow::Grid::Vertex_[%left,  %bottom, %z] = %bottomLeft;
 	$BuildableSnow::Grid::Vertex_[%right, %bottom, %z] = %bottomRight;
+
+	return $BuildableSnow::Error::None;
 }
 
-// @returns {SnowVertices} A string with the vertices separated by a space in this order:
-//                         top left, top right, bottom left, bottom right.
+// @returns {BuildableSnowVertices} A string with the vertices separated by a space in this order:
+//                                  top left, top right, bottom left, bottom right.
 //
 function fxDTSBrick::getSnowVertices ( %this )
 {
