@@ -105,12 +105,12 @@ function fxDTSBrick::updateSnow ( %this )
 		return $BuildableSnow::Error::NotSnowBrick;
 	}
 
-	%left   = %this.gridVertexLeft;
-	%right  = %this.gridVertexRight;
-	%top    = %this.gridVertexTop;
-	%bottom = %this.gridVertexBottom;
+	%left   = %this.snowVertexLeft;
+	%right  = %this.snowVertexRight;
+	%top    = %this.snowVertexTop;
+	%bottom = %this.snowVertexBottom;
 
-	%z = %this.gridZ;
+	%z = %this.snowGridZ;
 
 	%topLeft     = $BuildableSnow::Grid::Vertex_[%left,  %top,    %z];
 	%topRight    = $BuildableSnow::Grid::Vertex_[%right, %top,    %z];

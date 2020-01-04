@@ -1,7 +1,7 @@
-// @param {0|1} topLeft
-// @param {0|1} topRight
-// @param {0|1} bottomLeft
-// @param {0|1} bottomRight
+// @param {boolean} topLeft
+// @param {boolean} topRight
+// @param {boolean} bottomLeft
+// @param {boolean} bottomRight
 //
 // @returns {BuildableSnowError}
 //
@@ -12,14 +12,14 @@ function fxDTSBrick::setSnowVertices ( %this, %topLeft, %topRight, %bottomLeft, 
 		return $BuildableSnow::Error::NotSnowBrick;
 	}
 
-	%left   = %this.gridVertexLeft;
-	%right  = %this.gridVertexRight;
-	%top    = %this.gridVertexTop;
-	%bottom = %this.gridVertexBottom;
+	%left   = %this.snowVertexLeft;
+	%right  = %this.snowVertexRight;
+	%top    = %this.snowVertexTop;
+	%bottom = %this.snowVertexBottom;
 
-	%x = %this.gridX;
-	%y = %this.gridY;
-	%z = %this.gridZ;
+	%x = %this.snowGridX;
+	%y = %this.snowGridY;
+	%z = %this.snowGridZ;
 
 	$BuildableSnow::Grid::Vertex_[%left,  %top,    %z] = %topLeft;
 	$BuildableSnow::Grid::Vertex_[%right, %top,    %z] = %topRight;
@@ -34,12 +34,12 @@ function fxDTSBrick::setSnowVertices ( %this, %topLeft, %topRight, %bottomLeft, 
 //
 function fxDTSBrick::getSnowVertices ( %this )
 {
-	%left   = %this.gridVertexLeft;
-	%right  = %this.gridVertexRight;
-	%top    = %this.gridVertexTop;
-	%bottom = %this.gridVertexBottom;
+	%left   = %this.snowVertexLeft;
+	%right  = %this.snowVertexRight;
+	%top    = %this.snowVertexTop;
+	%bottom = %this.snowVertexBottom;
 
-	%z = %this.gridZ;
+	%z = %this.snowGridZ;
 
 	%topLeft     = $BuildableSnow::Grid::Vertex_[%left,  %top,    %z];
 	%topRight    = $BuildableSnow::Grid::Vertex_[%right, %top,    %z];

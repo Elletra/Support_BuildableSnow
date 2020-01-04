@@ -23,14 +23,14 @@ function BuildableSnow_CreateSnowBrick ( %x, %y, %z )
 
 	BuildableSnowBrickset.add (%brick);
 
-	%brick.gridX = %x;
-	%brick.gridY = %y;
-	%brick.gridZ = %z;
+	%brick.snowGridX = %x;
+	%brick.snowGridY = %y;
+	%brick.snowGridZ = %z;
 
-	%brick.gridVertexLeft   = %x;      // Leftmost X vertex coordinate
-	%brick.gridVertexRight  = %x + 1;  // Rightmost X vertex coordinate
-	%brick.gridVertexTop    = %y;      // Topmost Y vertex coordinate
-	%brick.gridVertexBottom = %y + 1;  // Bottommost Y vertex coordinate
+	%brick.snowVertexLeft   = %x;      // Leftmost X vertex coordinate
+	%brick.snowVertexRight  = %x + 1;  // Rightmost X vertex coordinate
+	%brick.snowVertexTop    = %y;      // Topmost Y vertex coordinate
+	%brick.snowVertexBottom = %y + 1;  // Bottommost Y vertex coordinate
 
 	if ( isObject ($BuildableSnow::Grid::Brick_[%x, %y, %z]) )
 	{

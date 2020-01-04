@@ -76,9 +76,9 @@ function BuildableSnow_GridToWorld ( %x, %y, %z )
 //
 function fxDTSBrick::getSnowNeighbor ( %this, %x, %y, %z )
 {
-	%gridX = %this.gridX;
-	%gridY = %this.gridY;
-	%gridZ = %this.gridZ;
+	%gridX = %this.snowGridX;
+	%gridY = %this.snowGridY;
+	%gridZ = %this.snowGridZ;
 
 	%neighbor = BuildableSnow_GetBrick (%gridX + %x, %gridY + %y, %gridZ + %z);
 
@@ -110,9 +110,9 @@ function fxDTSBrick::hasSnowNeighbor ( %this, %x, %y, %z )
 //
 function fxDTSBrick::hasEmptySnowSpot ( %this, %x, %y, %z )
 {
-	%gridX = %this.gridX;
-	%gridY = %this.gridY;
-	%gridZ = %this.gridZ;
+	%gridX = %this.snowGridX;
+	%gridY = %this.snowGridY;
+	%gridZ = %this.snowGridZ;
 
 	%neighbor = BuildableSnow_GetBrick (%gridX + %x, %gridY + %y, %gridZ + %z);
 
