@@ -27,7 +27,7 @@ function fxDTSBrick::raiseSnow ( %this )
 		return;
 	}
 
-	// Raise snow brick above if this brick is flat.
+	// Raise snow above if this brick is flat.
 	if ( %this.dataBlock $= $BuildableSnow::DataBlock_[1, 1, 1, 1] )
 	{
 		%aboveSnow = %this.getSnowNeighbor (0, 0, 1);
