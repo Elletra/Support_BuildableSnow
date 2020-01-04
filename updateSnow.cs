@@ -1,10 +1,6 @@
 // Update adjacent neighbor snow bricks.
 function fxDTSBrick::updateSnowNeighbors ( %this )
 {
-	%x = %this.gridX;
-	%y = %this.gridY;
-	%z = %this.gridZ;
-
 	for ( %w = -1;  %w < 2;  %w++ )
 	{
 		for ( %l = -1;  %l < 2;  %l++ )
@@ -110,8 +106,6 @@ function fxDTSBrick::updateSnow ( %this )
 	%top    = %this.gridVertexTop;
 	%bottom = %this.gridVertexBottom;
 
-	%x = %this.gridX;
-	%y = %this.gridY;
 	%z = %this.gridZ;
 
 	%topLeft     = $BuildableSnow::Grid::Vertex_[%left,  %top,    %z];
@@ -149,12 +143,20 @@ function fxDTSBrick::updateSnow ( %this )
 		%data = $BuildableSnow::DataBlock_[%topLeft, %topRight, %bottomLeft, %bottomRight];
 	}
 
-	%this.setDataBlock (%data);
+	//* Update brick datablock and surrounding neighbors if the snow data has been changed. *//
 
-	// Update snow brick below (if there is one).
-	if ( %z > 0 )
+	%currentData = %this.dataBlock;
+
+	if ( %currentData !$= %data )
 	{
-		%this.getSnowNeighbor (0, 0, -1).updateSnow ();
+		%this.setDataBlock (%data);
+		%this.updateSnowNeighbors ();
+
+		// Update snow brick below (if there is one).
+		if ( %z > 0 )
+		{
+			%this.getSnowNeighbor (0, 0, -1).updateSnow ();
+		}
 	}
 
 	%this.setColliding (%data !$= $BuildableSnow::DataBlock_[0, 0, 0, 0]);
