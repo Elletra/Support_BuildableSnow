@@ -4,6 +4,11 @@
 //
 function fxDTSBrick::lowerSnow ( %this )
 {
+	if ( !%this.dataBlock.isSnowBrick )
+	{
+		return $BuildableSnow::Error::NotSnowBrick;
+	}
+
 	if ( !%this.hasEmptySnowSpot (0, 0, 1) )
 	{
 		return $BuildableSnow::Error::HasSnowAbove;
@@ -21,6 +26,11 @@ function fxDTSBrick::lowerSnow ( %this )
 //
 function fxDTSBrick::raiseSnow ( %this )
 {
+	if ( !%this.dataBlock.isSnowBrick )
+	{
+		return $BuildableSnow::Error::NotSnowBrick;
+	}
+
 	//* Make sure the surrounding bricks below even exist to support raising it. *//
 
 	%z = %this.snowGridZ;
