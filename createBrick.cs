@@ -13,7 +13,7 @@ if ( !isObject (BuildableSnowBrickset) )
 //
 function BuildableSnow_CreateSnowBrick ( %x, %y, %z )
 {
-	%data     = $BuildableSnow::DataBlocks_[0, 0, 0, 0];
+	%data     = $BuildableSnow::DataBlocks_[1, 1, 1, 1];
 	%position = BuildableSnow_GridToWorld (%x, %y, %z);
 	%angleID  = $BuildableSnow::SnowAngleID;
 	%color    = $BuildableSnow::SnowColor;
@@ -39,7 +39,7 @@ function BuildableSnow_CreateSnowBrick ( %x, %y, %z )
 
 	$BuildableSnow::Grid::Brick_[%x, %y, %z] = %brick;
 
-	%brick.setSnowVertices (0, 0, 0, 0);
+	%brick.setSnowVertices (1, 1, 1, 1);
 
 	return %brick;
 }
