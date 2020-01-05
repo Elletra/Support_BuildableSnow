@@ -13,6 +13,12 @@ if ( !isObject (BuildableSnowBrickset) )
 //
 function BuildableSnow_CreateSnowBrick ( %x, %y, %z )
 {
+	if ( !BuildableSnow_isValidGridPos (%x, %y, %z) )
+	{
+		error ("ERROR: BuildableSnow_CreateSnowBrick () - Invalid grid position");
+		return -1;
+	}
+
 	%data     = $BuildableSnow::DataBlock_[1, 1, 1, 1];
 	%position = BuildableSnow_GridToWorld (%x, %y, %z);
 	%angleID  = $BuildableSnow::SnowAngleID;

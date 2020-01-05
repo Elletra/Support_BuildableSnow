@@ -73,6 +73,21 @@ function BuildableSnow_GridToWorld ( %x, %y, %z )
 	return %worldX SPC %worldY SPC %worldZ;
 }
 
+// Checks whether or not a grid position is within the grid's bounds.
+//
+// @param {integer} x
+// @param {integer} y
+// @param {integer} z
+//
+// @returns {boolean}
+//
+function BuildableSnow_isValidGridPos ( %x, %y, %z )
+{
+	return %x >= 0  &&  %x < $BuildableSnow::Grid::Width   &&
+	       %y >= 0  &&  %y < $BuildableSnow::Grid::Length  &&
+	       %z >= 0  &&  %z < $BuildableSnow::Grid::Height;
+}
+
 // Gets the brick at the position (x, y, z) relative to this brick, if any.
 //
 // @param {integer} x
