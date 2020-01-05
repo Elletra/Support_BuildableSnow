@@ -46,8 +46,11 @@ function fxDTSBrick::raiseSnow ( %this )
 		}
 	}
 
-	// Raise snow above if this brick is flat.
-	if ( %this.dataBlock $= $BuildableSnow::DataBlock_[1, 1, 1, 1] )
+	//* Raise snow above if this brick is flat and there's no brick above it. *//
+
+	%isAboveEmpty = %this.hasEmptySnowSpot (0, 0, 1);
+
+	if ( %isAboveEmpty  &&  %this.dataBlock $= $BuildableSnow::DataBlock_[1, 1, 1, 1] )
 	{
 		%aboveSnow = %this.getSnowNeighbor (0, 0, 1);
 
@@ -59,13 +62,13 @@ function fxDTSBrick::raiseSnow ( %this )
 
 	%this.setSnowVertices (1, 1, 1, 1);
 
-	if ( %this.hasEmptySnowSpot (0, 0, 1) )
+	if ( %isAboveEmpty )
 	{
 		%this.updateSnow ();
 	}
 	else
 	{
-		// We can only update the neighbors if there's a snow brick above.
+		// If there's snow above, we can only update the neighbor bricks.
 		%this.updateSnowNeighbors ();
 	}
 
