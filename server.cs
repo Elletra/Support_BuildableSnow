@@ -1,5 +1,10 @@
 exec ("./lib/Support_CreateBrick.cs");
 
+if ( !isFunction ("getClosestPaintColor") )
+{
+	exec ("./lib/getClosestPaintColor.cs");
+}
+
 exec ("./bricks/datablocks.cs");
 
 exec ("./constants.cs");
