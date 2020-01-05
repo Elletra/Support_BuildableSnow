@@ -1,4 +1,3 @@
-// Load library files.
 exec ("./lib/Support_CreateBrick.cs");
 
 exec ("./bricks/datablocks.cs");
