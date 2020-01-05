@@ -2,9 +2,9 @@
 // @param {integer} [length] - Defaults to 16.
 // @param {integer} [height] - Defaults to 1.
 //
-function BuildableSnow_InitGrid ( %width, %length, %height )
+function BuildableSnow_CreateGrid ( %width, %length, %height )
 {
-	deleteVariables ("$BuildableSnow::Grid::*");
+	BuildableSnow_DestroyGrid ();
 
 	$BuildableSnow::Grid::Width  = (%width  $= "" ? 16 : %width);
 	$BuildableSnow::Grid::Length = (%length $= "" ? 16 : %length);
@@ -25,6 +25,13 @@ function BuildableSnow_InitGrid ( %width, %length, %height )
 			}
 		}
 	}
+}
+
+// Deletes all bricks in the existing grid, if any, and deletes all grid-related variables.
+function BuildableSnow_DestroyGrid ()
+{
+	BuildableSnowBrickset.deleteAll ();
+	deleteVariables ("$BuildableSnow::Grid::*");
 }
 
 // @param {integer} x
