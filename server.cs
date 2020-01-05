@@ -1,9 +1,9 @@
-exec ("./lib/Support_CreateBrick.cs");
-
 if ( !isFunction ("getClosestPaintColor") )
 {
 	exec ("./lib/getClosestPaintColor.cs");
 }
+
+exec ("./lib/Support_CreateBrick.cs");
 
 exec ("./bricks/datablocks.cs");
 
