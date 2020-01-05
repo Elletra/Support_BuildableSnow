@@ -144,9 +144,7 @@ function fxDTSBrick::updateSnow ( %this )
 
 	//* Update brick datablock and surrounding neighbors if the snow data has been changed. *//
 
-	%currentData = %this.dataBlock;
-
-	if ( %currentData !$= %data )
+	if ( %this.dataBlock !$= %data )
 	{
 		%this.setDataBlock (%data);
 		%this.updateSnowNeighbors ();
