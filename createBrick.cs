@@ -3,24 +3,24 @@ if ( !isObject (BuildableSnowBrickset) )
 	new SimSet (BuildableSnowBrickset);
 }
 
-// Creates snow brick at a position and adds it to the grid.
+// Creates snow brick at a grid position and adds it to the grid.
 //
-// @param {integer} x
-// @param {integer} y
-// @param {integer} z
+// @param {integer} gridX
+// @param {integer} gridY
+// @param {integer} gridZ
 //
 // @returns {fxDTSBrick|-1} Returns -1 if there was an issue creating or planting the brick.
 //
-function BuildableSnow_CreateSnowBrick ( %x, %y, %z )
+function BuildableSnow_CreateSnowBrick ( %gridX, %gridY, %gridZ )
 {
-	if ( !BuildableSnow_isValidGridPos (%x, %y, %z) )
+	if ( !BuildableSnow_isValidGridPos (%gridX, %gridY, %gridZ) )
 	{
 		error ("ERROR: BuildableSnow_CreateSnowBrick () - Invalid grid position");
 		return -1;
 	}
 
 	%data     = $BuildableSnow::DataBlock_[1, 1, 1, 1];
-	%position = BuildableSnow_GridToWorld (%x, %y, %z);
+	%position = BuildableSnow_GridToWorld (%gridX, %gridY, %gridZ);
 	%angleID  = $BuildableSnow::SnowAngleID;
 	%color    = $BuildableSnow::SnowColorID;
 	%group    = $BuildableSnow::SnowBrickGroup;
@@ -34,21 +34,23 @@ function BuildableSnow_CreateSnowBrick ( %x, %y, %z )
 
 	BuildableSnowBrickset.add (%brick);
 
-	%brick.snowGridX = %x;
-	%brick.snowGridY = %y;
-	%brick.snowGridZ = %z;
+	%brick.snowGridX = %gridX;
+	%brick.snowGridY = %gridY;
+	%brick.snowGridZ = %gridZ;
 
-	%brick.snowVertexLeft   = %x;      // Leftmost X vertex coordinate
-	%brick.snowVertexRight  = %x + 1;  // Rightmost X vertex coordinate
-	%brick.snowVertexTop    = %y;      // Topmost Y vertex coordinate
-	%brick.snowVertexBottom = %y + 1;  // Bottommost Y vertex coordinate
+	%brick.snowVertexLeft   = %gridX;      // Leftmost X vertex coordinate
+	%brick.snowVertexRight  = %gridX + 1;  // Rightmost X vertex coordinate
+	%brick.snowVertexTop    = %gridY;      // Topmost Y vertex coordinate
+	%brick.snowVertexBottom = %gridY + 1;  // Bottommost Y vertex coordinate
 
-	if ( isObject ($BuildableSnow::Grid::Brick_[%x, %y, %z]) )
+	%existingBrick = $BuildableSnow::Grid::Brick_[%gridX, %gridY, %gridZ];
+
+	if ( isObject (%existingBrick) )
 	{
-		$BuildableSnow::Grid::Brick_[%x, %y, %z].delete ();
+		%existingBrick.delete ();
 	}
 
-	$BuildableSnow::Grid::Brick_[%x, %y, %z] = %brick;
+	$BuildableSnow::Grid::Brick_[%gridX, %gridY, %gridZ] = %brick;
 
 	%brick.setSnowVertices (1, 1, 1, 1);
 
