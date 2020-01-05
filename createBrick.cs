@@ -21,6 +21,11 @@ function BuildableSnow_CreateSnowBrick ( %x, %y, %z )
 
 	%brick = createBrick (%data, %position, %angleID, %color, 1, %group, 0, 1);
 
+	if ( !isObject (%brick) )
+	{
+		return -1;
+	}
+
 	BuildableSnowBrickset.add (%brick);
 
 	%brick.snowGridX = %x;
