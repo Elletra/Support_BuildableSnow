@@ -1,5 +1,7 @@
+//* Various constants related to brick planting. *//
+
 $BuildableSnow::SnowBrickGroup = BrickGroup_888888;
-$BuildableSnow::SnowColor      = 15;
+$BuildableSnow::SnowColorID    = 15;
 $BuildableSnow::SnowAngleID    = 3;
 
 //* Has vertices: top left, top right, bottom left, bottom right. *//

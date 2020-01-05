@@ -16,7 +16,7 @@ function BuildableSnow_CreateSnowBrick ( %x, %y, %z )
 	%data     = $BuildableSnow::DataBlock_[1, 1, 1, 1];
 	%position = BuildableSnow_GridToWorld (%x, %y, %z);
 	%angleID  = $BuildableSnow::SnowAngleID;
-	%color    = $BuildableSnow::SnowColor;
+	%color    = $BuildableSnow::SnowColorID;
 	%group    = $BuildableSnow::SnowBrickGroup;
 
 	%brick = createBrick (%data, %position, %angleID, %color, 1, %group, 0, 1);
