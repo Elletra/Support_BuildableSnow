@@ -14,22 +14,7 @@ function fxDTSBrick::lowerSnow ( %this )
 		return $BuildableSnow::Error::HasSnowAbove;
 	}
 
-	%vertices = %this.getSnowVertices ();
-
-	%topLeft     = getWord (%vertices, 0);
-	%topRight    = getWord (%vertices, 1);
-	%bottomLeft  = getWord (%vertices, 2);
-	%bottomRight = getWord (%vertices, 3);
-
 	%this.setSnowVertices (0, 0, 0, 0);
-
-	%below = %this.getSnowNeighbor (0, 0, -1);
-
-	if ( isObject (%below)  &&  %below.getSnowVertices () $= "0 0 0 0" )
-	{
-		%below.setSnowVertices (%topLeft, %topRight, %bottomLeft, %bottomRight);
-	}
-
 	%this.updateSnow ();
 
 	return $BuildableSnow::Error::None;
@@ -44,6 +29,21 @@ function fxDTSBrick::raiseSnow ( %this )
 	if ( !%this.dataBlock.isSnowBrick )
 	{
 		return $BuildableSnow::Error::NotSnowBrick;
+	}
+
+	//* Make sure the surrounding bricks below even exist to support raising it. *//
+
+	%z = %this.snowGridZ;
+
+	for ( %w = -1;  %w <= 1;  %w++ )
+	{
+		for ( %l = -1;  %l <= 1;  %l++ )
+		{
+			if ( %z > 0  &&  %this.hasEmptySnowSpot (%w, %l, -1) )
+			{
+				return $BuildableSnow::Error::NoSnowBelow;
+			}
+		}
 	}
 
 	// Raise snow above if this brick is flat.
