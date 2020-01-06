@@ -67,7 +67,6 @@ function createBrick ( %data, %pos, %angID, %color, %plant, %group, %ignoreStuck
 
 		isPlanted = %plant;
 	};
-
 	%group.add (%brick);
 
 	if ( isObject (%group.client) )
