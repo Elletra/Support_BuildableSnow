@@ -12,4 +12,4 @@ exec ("./createBrick.cs");
 exec ("./snowVertices.cs");
 exec ("./updateSnow.cs");
 exec ("./raiseLower.cs");
-exec ("./grid.cs");
+exec ("./grid/exec.cs");
