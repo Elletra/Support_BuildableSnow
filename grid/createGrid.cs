@@ -48,7 +48,7 @@ function BuildableSnow_CreateGrid ( %width, %length, %height, %useAsync, %asyncC
 	}
 }
 
-// Tick function for async grid creation.  Internal use only.
+// Tick function for async grid creation.  Internal use only (i.e. don't use this).
 //
 // @param {integer} x
 // @param {integer} y
