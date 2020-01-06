@@ -13,6 +13,11 @@ function BuildableSnow_CreateGrid ( %width, %length, %height, %useAsync, %asyncC
 		cancel ($BuildableSnow::CreateGridTick);
 	}
 
+	if ( isEventPending ($BuildableSnow::DestroyGridTick) )
+	{
+		cancel ($BuildableSnow::DestroyGridTick);
+	}
+
 	BuildableSnow_DestroyGrid ();
 
 	if ( %width $= ""  ||  %length $= ""  ||  %height $= "" )
