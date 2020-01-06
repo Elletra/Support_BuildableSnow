@@ -1,8 +1,9 @@
 //* Various constants related to brick planting. *//
 
-$BuildableSnow::SnowBrickGroup = BrickGroup_888888;
-$BuildableSnow::SnowColorID    = getClosestPaintColor ("1 1 1 1");
-$BuildableSnow::SnowAngleID    = 3;
+$BuildableSnow::SnowBrickGroup     = BrickGroup_888888;
+$BuildableSnow::SnowColorID        = getClosestPaintColor ("1 1 1 1");
+$BuildableSnow::SnowAngleID        = 3;
+$BuildableSnow::CreateGridTickRate = 1;
 
 //* Has vertices: top left, top right, bottom left, bottom right. *//
 
