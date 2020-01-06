@@ -33,15 +33,16 @@ function fxDTSBrick::raiseSnow ( %this )
 
 	//* Make sure the surrounding bricks below even exist to support raising it. *//
 
-	%z = %this.snowGridZ;
-
-	for ( %w = -1;  %w <= 1;  %w++ )
+	if ( %this.snowGridZ > 0 )
 	{
-		for ( %l = -1;  %l <= 1;  %l++ )
+		for ( %w = -1;  %w <= 1;  %w++ )
 		{
-			if ( %z > 0  &&  %this.hasEmptySnowSpot (%w, %l, -1) )
+			for ( %l = -1;  %l <= 1;  %l++ )
 			{
-				return $BuildableSnow::Error::NoSnowBelow;
+				if ( %this.hasEmptySnowSpot (%w, %l, -1)  &&  %this.hasSnowNeighbor (%w, %l, -1) )
+				{
+					return $BuildableSnow::Error::NoSnowBelow;
+				}
 			}
 		}
 	}
