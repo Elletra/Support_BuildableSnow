@@ -22,8 +22,8 @@ function fxDTSBrick::updateSnowNeighbors ( %this )
 // This function is a total hack just to make everything look less ugly.
 //
 // Basically, we want bricks under corner slopes to become adapters because it looks nicer.
-// However, this can cause certain problems, so this is a special function to make sure that they
-// don't happen.
+// However, this can cause certain problems, so this is a special function to make sure that it
+// doesn't happen.
 //
 // @param {fxDTSBrickData} data - The adapter datablock we want to set this brick to.
 //

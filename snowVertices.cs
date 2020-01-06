@@ -1,3 +1,7 @@
+// Sets the brick's snow vertices data.
+//
+// Does not change the brick's datablock (@see fxDTSBrick::updateSnow)
+//
 // @param {boolean} topLeft
 // @param {boolean} topRight
 // @param {boolean} bottomLeft
