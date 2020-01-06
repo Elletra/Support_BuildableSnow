@@ -1,14 +1,20 @@
-// @param {integer} [width]  - Defaults to 16.
-// @param {integer} [length] - Defaults to 16.
-// @param {integer} [height] - Defaults to 1.
+// @param {integer} width
+// @param {integer} length
+// @param {integer} height
 //
 function BuildableSnow_CreateGrid ( %width, %length, %height )
 {
 	BuildableSnow_DestroyGrid ();
 
-	$BuildableSnow::Grid::Width  = (%width  $= "" ? 16 : %width);
-	$BuildableSnow::Grid::Length = (%length $= "" ? 16 : %length);
-	$BuildableSnow::Grid::Height = (%height $= "" ? 1  : %height);
+	if ( %width $= ""  ||  %length $= ""  ||  %height $= "" )
+	{
+		error ("ERROR: BuildableSnow_CreateGrid () - Missing required parameter(s)");
+		return;
+	}
+
+	$BuildableSnow::Grid::Width  = %width;
+	$BuildableSnow::Grid::Length = %length;
+	$BuildableSnow::Grid::Height = %height;
 
 	for ( %x = 0;  %x < $BuildableSnow::Grid::Width;  %x++ )
 	{
