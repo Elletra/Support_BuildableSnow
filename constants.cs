@@ -3,7 +3,7 @@
 $BuildableSnow::SnowBrickGroup     = BrickGroup_888888;
 $BuildableSnow::SnowColorID        = getClosestPaintColor ("1 1 1 1");
 $BuildableSnow::SnowAngleID        = 3;
-$BuildableSnow::CreateGridTickRate = 1;
+$BuildableSnow::CreateGridTickRate = 0;
 
 //* Has vertices: top left, top right, bottom left, bottom right. *//
 
