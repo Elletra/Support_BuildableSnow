@@ -28,6 +28,7 @@ function BuildableSnow_DestroyGrid ( %useAsync, %asyncCallback )
 // Tick function for async grid destruction.  Internal use only (i.e. don't use this).
 //
 // @param {string} [asyncCallback]
+//
 // @private
 //
 function BuildableSnow_DestroyGrid_Tick ( %asyncCallback )
