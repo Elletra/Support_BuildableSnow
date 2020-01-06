@@ -46,7 +46,7 @@ function fxDTSBrick::raiseSnow ( %this )
 		}
 	}
 
-	//* Raise snow above if this brick is flat and there's no brick above it. *//
+	//* Raise snow above if this brick is flat and there's no snow above it. *//
 
 	%isAboveEmpty = %this.hasEmptySnowSpot (0, 0, 1);
 

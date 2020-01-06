@@ -33,6 +33,11 @@ function fxDTSBrick::setSnowVertices ( %this, %topLeft, %topRight, %bottomLeft, 
 	return $BuildableSnow::Error::None;
 }
 
+// Returns the actual snow vertex data.
+//
+// Since the brick's datablock does not always necessarily correspond with the actual vertex data
+// for aesthetic purposes, we want to be able to accurately get the vertex data.
+//
 // @returns {BuildableSnowVertices} A string with the vertices separated by a space in this order:
 //                                  top left, top right, bottom left, bottom right.
 //
