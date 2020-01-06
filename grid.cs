@@ -98,11 +98,11 @@ function BuildableSnow_isValidGridPos ( %x, %y, %z )
 //
 function fxDTSBrick::getSnowNeighbor ( %this, %x, %y, %z )
 {
-	%gridX = %this.snowGridX;
-	%gridY = %this.snowGridY;
-	%gridZ = %this.snowGridZ;
+	%neighborX = %this.snowGridX + %x;
+	%neighborY = %this.snowGridY + %y;
+	%neighborZ = %this.snowGridZ + %z;
 
-	%neighbor = BuildableSnow_GetBrick (%gridX + %x, %gridY + %y, %gridZ + %z);
+	%neighbor = BuildableSnow_GetBrick (%neighborX, %neighborY, %neighborZ);
 
 	if ( isObject (%neighbor) )
 	{
@@ -132,11 +132,7 @@ function fxDTSBrick::hasSnowNeighbor ( %this, %x, %y, %z )
 //
 function fxDTSBrick::hasEmptySnowSpot ( %this, %x, %y, %z )
 {
-	%gridX = %this.snowGridX;
-	%gridY = %this.snowGridY;
-	%gridZ = %this.snowGridZ;
-
-	%neighbor = BuildableSnow_GetBrick (%gridX + %x, %gridY + %y, %gridZ + %z);
+	%neighbor = %this.getSnowNeighbor (%x, %y, %z);
 
 	if ( isObject (%neighbor) )
 	{
