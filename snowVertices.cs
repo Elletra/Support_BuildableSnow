@@ -8,7 +8,7 @@
 // @param {boolean} bottomRight
 //
 // @returns {boolean} Whether or not the operation was successful.  Use $BuildableSnow::LastError
-//                    when checking for errors.
+//                    to check for errors.
 //
 function fxDTSBrick::setSnowVertices ( %this, %topLeft, %topRight, %bottomLeft, %bottomRight )
 {

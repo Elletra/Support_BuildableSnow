@@ -105,7 +105,7 @@ function fxDTSBrick::snowAdapterCheck ( %this, %data )
 // Updates snow brick datablock and, if needed, surrounding neighbors.
 //
 // @returns {boolean} Whether or not the operation was successful.  Use $BuildableSnow::LastError
-//                    when checking for errors.
+//                    to check for errors.
 //
 function fxDTSBrick::updateSnow ( %this )
 {

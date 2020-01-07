@@ -1,7 +1,7 @@
 // Lowers snow, provided there's no snow above this brick.
 //
 // @returns {boolean} Whether or not the operation was successful.  Use $BuildableSnow::LastError
-//                    when checking for errors.
+//                    to check for errors.
 //
 function fxDTSBrick::lowerSnow ( %this )
 {
@@ -28,7 +28,7 @@ function fxDTSBrick::lowerSnow ( %this )
 // Flattens brick if it's not already; raises snow brick above if it is.
 //
 // @returns {boolean} Whether or not the operation was successful.  Use $BuildableSnow::LastError
-//                    when checking for errors.
+//                    to check for errors.
 //
 function fxDTSBrick::raiseSnow ( %this )
 {

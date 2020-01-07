@@ -11,7 +11,7 @@
 // ------------------------------------------------------------------------
 //  This function does not print error messages.  Instead, it sets the
 //  $CreateBrick::LastError variable to a value and returns -1.  Use this
-//  variable when checking for errors.
+//  variable to check for errors.
 // ------------------------------------------------------------------------
 
 if ( $CreateBrick::Version >= 1 )
