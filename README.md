@@ -3,7 +3,7 @@
 
 ## <a name="api"></a>API
 
-#### <a name="api-create-grid"></a>`BuildableSnow_CreateGrid (width, length, height, useAsync, asyncCallback);`
+#### <a name="api-create-grid"></a>`BuildableSnow_CreateGrid (width, length, height[, useAsync[, asyncCallback]]);`
 
 Creates the WxLxH grid of snow bricks, either synchronously or asynchronously.
 
@@ -17,7 +17,7 @@ Creates the WxLxH grid of snow bricks, either synchronously or asynchronously.
 
 ##
 
-#### <a name="api-destroy-grid"></a>`BuildableSnow_DestroyGrid (useAsync, asyncCallback);`
+#### <a name="api-destroy-grid"></a>`BuildableSnow_DestroyGrid ([useAsync[, asyncCallback]]);`
 
 Destroys the snow grid, either synchronously or asynchronously.
 
