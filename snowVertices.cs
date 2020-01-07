@@ -25,6 +25,8 @@ function fxDTSBrick::setSnowVertices ( %this, %topLeft, %topRight, %bottomLeft, 
 
 	%z = %this.snowGridZ;
 
+	//* The vertex grid: (x, y, z) *//
+
 	$BuildableSnow::Grid::Vertex_[%left,  %top,    %z] = %topLeft;
 	$BuildableSnow::Grid::Vertex_[%right, %top,    %z] = %topRight;
 	$BuildableSnow::Grid::Vertex_[%left,  %bottom, %z] = %bottomLeft;
