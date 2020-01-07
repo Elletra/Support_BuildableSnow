@@ -1,6 +1,16 @@
 // Update adjacent neighbor snow bricks.
+//
+// @returns {boolean} Whether or not the operation was successful.  Use $BuildableSnow::LastError
+//                    to check for errors.
+//
 function fxDTSBrick::updateSnowNeighbors ( %this )
 {
+	if ( !%this.dataBlock.isSnowBrick )
+	{
+		$BuildableSnow::LastError = $BuildableSnow::Error::NotSnowBrick;
+		return false;
+	}
+
 	for ( %w = -1;  %w <= 1;  %w++ )
 	{
 		for ( %l = -1;  %l <= 1;  %l++ )
@@ -13,6 +23,10 @@ function fxDTSBrick::updateSnowNeighbors ( %this )
 			}
 		}
 	}
+
+	$BuildableSnow::LastError = $BuildableSnow::Error::None;
+
+	return true;
 }
 
 // Checks if a brick can be set to an adapter datablock, based on two adjacent neighbors relative
