@@ -32,11 +32,15 @@ Destroys the snow grid, either synchronously or asynchronously.
 
 Flattens brick if it's not already; raises snow brick above if it is.
 
+**Returns**  `boolean` Whether or not the operation was successful.  Use [`$BuildableSnow::LastError`](#error-handling) to check for errors.
+
 ##
 
 #### <a name="api-lower-snow"></a>`fxDTSBrick::lowerSnow ();`
 
 Lowers snow, provided there's no snow above this brick.
+
+**Returns**  `boolean` Whether or not the operation was successful.  Use [`$BuildableSnow::LastError`](#error-handling) to check for errors.
 
 ## <a name="error-handling">Error Handling
 
