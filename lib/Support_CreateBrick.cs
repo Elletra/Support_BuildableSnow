@@ -29,9 +29,10 @@ $CreateBrick::Error::PlantFloat    = 2;
 $CreateBrick::Error::PlantStuck    = 3;
 $CreateBrick::Error::PlantUnstable = 4;
 $CreateBrick::Error::PlantBuried   = 5;
-$CreateBrick::Error::DataBlock     = 6;
-$CreateBrick::Error::AngleID       = 7;
-$CreateBrick::Error::BrickGroup    = 8;
+$CreateBrick::Error::Generic       = 6;
+$CreateBrick::Error::DataBlock     = 7;
+$CreateBrick::Error::AngleID       = 8;
+$CreateBrick::Error::BrickGroup    = 9;
 
 $CreateBrick::LastError = $CreateBrick::Error::None;
 
@@ -96,6 +97,13 @@ function createBrick ( %data, %pos, %angID, %colorID, %plant, %group, %ignoreStu
 
 		isPlanted = %plant;
 	};
+
+	if ( !isObject (%brick) )
+	{
+		$CreateBrick::LastError = $CreateBrick::Error::Generic;
+		return -1;
+	}
+
 	%group.add (%brick);
 
 	if ( isObject (%group.client) )
