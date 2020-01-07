@@ -11,6 +11,7 @@ function fxDTSBrick::lowerSnow ( %this )
 		return false;
 	}
 
+	// Cannot be lowered if there is snow above.
 	if ( !%this.hasEmptySnowSpot (0, 0, 1) )
 	{
 		$BuildableSnow::LastError = $BuildableSnow::Error::HasSnowAbove;
@@ -59,7 +60,7 @@ function fxDTSBrick::raiseSnow ( %this )
 
 	%isAboveEmpty = %this.hasEmptySnowSpot (0, 0, 1);
 
-	if ( %isAboveEmpty  &&  %this.dataBlock $= $BuildableSnow::DataBlock_[1, 1, 1, 1] )
+	if ( %isAboveEmpty  &&  %this.getSnowVertices () $= "1 1 1 1" )
 	{
 		%aboveSnow = %this.getSnowNeighbor (0, 0, 1);
 
