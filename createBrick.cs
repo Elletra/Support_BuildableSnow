@@ -19,7 +19,7 @@ function BuildableSnow_CreateSnowBrick ( %gridX, %gridY, %gridZ )
 		return -1;
 	}
 
-	//* Everything uses constants.  No hardcoded values. *//
+	//* Everything uses global variables.  No hardcoded values. *//
 
 	%data     = $BuildableSnow::DataBlock_[1, 1, 1, 1];
 	%position = BuildableSnow_GridToWorld (%gridX, %gridY, %gridZ);
