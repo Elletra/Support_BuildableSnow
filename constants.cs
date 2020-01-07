@@ -33,6 +33,13 @@ $BuildableSnow::CornerToAdapter_[0, 0, 1, 0] = brick_snow_top_right_adapter_data
 $BuildableSnow::CornerToAdapter_[0, 1, 0, 0] = brick_snow_bottom_left_adapter_data;
 $BuildableSnow::CornerToAdapter_[1, 0, 0, 0] = brick_snow_bottom_right_adapter_data;
 
+//* Vertex order indices. *//
+
+$BuildableSnow::Vertex::TopLeft     = 0;
+$BuildableSnow::Vertex::TopRight    = 1;
+$BuildableSnow::Vertex::BottomLeft  = 2;
+$BuildableSnow::Vertex::BottomRight = 3;
+
 //* Error codes -- Do not change these. *//
 
 $BuildableSnow::Error::None           = 0;  // The operation was successful.

@@ -141,12 +141,8 @@ function fxDTSBrick::snowAdapterCheck ( %this, %data )
 			%coordY = -1;  // Which neighbor to check in the Y direction.
 
 			// Vertices that need to be set to 0 for this brick to be able to change.
-			// Values are indices of the vertex order: topLeft, topRight, bottomLeft, bottomRight.
-			//
-			// So for this one it would be topRight (1) and bottomLeft (2).
-			//
-			%emptyVert0 = 1;  // Used with %coordX
-			%emptyVert1 = 2;  // Used with %coordY
+			%emptyVert0 = $BuildableSnow::Vertex::TopRight;    // Used with %coordX
+			%emptyVert1 = $BuildableSnow::Vertex::BottomLeft;  // Used with %coordY
 
 		// Top right adapter
 		case $BuildableSnow::DataBlock_[1, 0, 1, 1]:
@@ -154,8 +150,8 @@ function fxDTSBrick::snowAdapterCheck ( %this, %data )
 			%coordX =  1;
 			%coordY = -1;
 
-			%emptyVert0 = 0;  // topLeft (0)
-			%emptyVert1 = 3;  // bottomRight (3)
+			%emptyVert0 = $BuildableSnow::Vertex::TopLeft;
+			%emptyVert1 = $BuildableSnow::Vertex::BottomRight;
 
 		// Bottom left adapter
 		case $BuildableSnow::DataBlock_[1, 1, 0, 1]:
@@ -163,8 +159,8 @@ function fxDTSBrick::snowAdapterCheck ( %this, %data )
 			%coordX = -1;
 			%coordY =  1;
 
-			%emptyVert0 = 3;  // bottomRight (3)
-			%emptyVert1 = 0;  // topLeft (0)
+			%emptyVert0 = $BuildableSnow::Vertex::BottomRight;
+			%emptyVert1 = $BuildableSnow::Vertex::TopLeft;
 
 		// Bottom right adapter
 		case $BuildableSnow::DataBlock_[1, 1, 1, 0]:
@@ -172,8 +168,8 @@ function fxDTSBrick::snowAdapterCheck ( %this, %data )
 			%coordX = 1;
 			%coordY = 1;
 
-			%emptyVert0 = 2;  // bottomLeft (2)
-			%emptyVert1 = 1;  // topRight (1)
+			%emptyVert0 = $BuildableSnow::Vertex::BottomLeft;
+			%emptyVert1 = $BuildableSnow::Vertex::TopRight;
 
 		default:
 			return false;
