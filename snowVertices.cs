@@ -1,4 +1,4 @@
-// Sets the brick's snow vertices data.
+// Sets the brick's snow vertex data.
 //
 // This does not change the brick's datablock (@see fxDTSBrick::updateSnow).
 //
@@ -37,9 +37,9 @@ function fxDTSBrick::setSnowVertices ( %this, %topLeft, %topRight, %bottomLeft, 
 	return true;
 }
 
-// Returns the actual snow vertex data.
+// Gets the actual snow vertex data.
 //
-// Since the brick's datablock does not always necessarily correspond with the actual vertex data
+// Since the brick's datablock does not always correspond with the actual vertex data
 // for aesthetic purposes, we want to be able to accurately get the vertex data.
 //
 // @returns {BuildableSnowVertices|null} A string with the vertices separated by a space in this order:
