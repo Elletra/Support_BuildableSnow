@@ -19,6 +19,8 @@ function BuildableSnow_CreateSnowBrick ( %gridX, %gridY, %gridZ )
 		return -1;
 	}
 
+	//* Everything uses constants.  No hardcoded values. *//
+
 	%data     = $BuildableSnow::DataBlock_[1, 1, 1, 1];
 	%position = BuildableSnow_GridToWorld (%gridX, %gridY, %gridZ);
 	%angleID  = $BuildableSnow::SnowAngleID;
@@ -77,7 +79,10 @@ function BuildableSnow_CreateSnowBrick ( %gridX, %gridY, %gridZ )
 	}
 
 	$BuildableSnow::Grid::Brick_[%gridX, %gridY, %gridZ] = %brick;
+
 	%brick.setSnowVertices (1, 1, 1, 1);
+
+	// The brick's datablock is already (1, 1, 1, 1) so we don't need to call updateSnow()
 
 	$BuildableSnow::LastError = $BuildableSnow::Error::None;
 
