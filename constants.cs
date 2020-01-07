@@ -1,6 +1,6 @@
 // Constant values/read-only variables -- Do not change these.
 //
-// There are some global variables that you can change in globalVariables.cs
+// There are some global variables that you can change in config.cs
 // These are not those.  Do not change these.
 //
 

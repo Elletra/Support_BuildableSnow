@@ -1,4 +1,4 @@
-// Global variables that you can change only if you know what you're doing.
+// Configurable global variables that you can change only if you know what you're doing.
 //
 // If you want to make a mod that replaces the existing snow datablocks with other bricks, change
 // the $BuildableSnow::DataBlock_* and $BuildableSnow::CornerToAdapter_* variables.
@@ -10,7 +10,7 @@ $BuildableSnow::SnowBrickGroup = BrickGroup_888888;
 $BuildableSnow::SnowColorID    = getClosestPaintColor ("1 1 1 1");
 $BuildableSnow::SnowAngleID    = 3;
 
-//* Tick rates of async grid creation and destruction. *//
+//* Tick rates of async grid creation/destruction. *//
 
 $BuildableSnow::CreateGridTickRate  = 0;
 $BuildableSnow::DestroyGridTickRate = 0;
