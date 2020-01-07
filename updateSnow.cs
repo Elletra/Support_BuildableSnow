@@ -189,7 +189,7 @@ function fxDTSBrick::snowAdapterCheck ( %this, %data )
 
 		%checkDB = %checkBrick.dataBlock;
 
-		// Check if neighbor's datablock has the proper vertex set to 0, and if it's a snow brick.
+		// Check if neighbor is a snow brick and its datablock has the proper vertex set to 0.
 		if ( !%checkDB.isSnowBrick  ||  getWord (%checkDB.snowVertices, %emptyVert[%i]) != 0 )
 		{
 			return false;
