@@ -20,7 +20,7 @@ function fxDTSBrick::lowerSnow ( %this )
 	return $BuildableSnow::Error::None;
 }
 
-// Flattens brick if it's not already; raises snow brick above it if it is.
+// Flattens brick if it's not already; raises snow brick above if it is.
 //
 // @returns {BuildableSnowError}
 //
