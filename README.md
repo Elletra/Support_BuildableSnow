@@ -32,7 +32,9 @@ Destroys the snow grid, either synchronously or asynchronously.
 
 Flattens brick if it's not already; raises snow brick above if it is.
 
-**Returns**  `boolean` Whether or not the operation was successful.  Use [`$BuildableSnow::LastError`](#error-handling) to check for errors.
+**Returns**  `boolean`
+
+Whether or not the operation was successful.  Use [`$BuildableSnow::LastError`](#error-handling) to check for errors.
 
 ##
 
@@ -40,7 +42,42 @@ Flattens brick if it's not already; raises snow brick above if it is.
 
 Lowers snow, provided there's no snow above this brick.
 
-**Returns**  `boolean` Whether or not the operation was successful.  Use [`$BuildableSnow::LastError`](#error-handling) to check for errors.
+**Returns**  `boolean`
+
+Whether or not the operation was successful.  Use [`$BuildableSnow::LastError`](#error-handling) to check for errors.
+
+##
+
+#### <a name="api-set-snow-vertices"></a> `fxDTSBrick::setSnowVertices (topLeft, topRight, bottomLeft, bottomRight);`
+
+Sets the brick's snow vertex data.
+
+Please note that this does not update the brick's datablock.  You'll normally want to use this function in conjunction with [`fxDTSBrick::updateSnow()`]("#api-update-snow") afterward.
+
+| Argument | Type |  Description  |
+| -------- | ---- | ------------- |
+| topLeft | boolean | Height of the brick's top left vertex (only supports 0 or 1). |
+| topRight | boolean | Height of the brick's top right vertex (only supports 0 or 1). |
+| bottomLeft | boolean | Height of the brick's bottom left vertex (only supports 0 or 1). |
+| bottomRight | boolean | Height of the brick's bottom right vertex (only supports 0 or 1). |
+
+**Returns**  `boolean`
+
+Whether or not the operation was successful.  Use [`$BuildableSnow::LastError`](#error-handling) to check for errors.
+
+##
+
+#### <a name="api-get-snow-vertices"></a> `fxDTSBrick::getSnowVertices ();`
+
+Gets the actual snow vertex data.
+
+Since the brick's datablock does not always correspond with the actual vertex data for aesthetic purposes, we want to be able to accurately get the vertex data.
+
+**Returns**  `BuildableSnowVertices` or `null`
+
+A string with the vertices separated by a space in this order: top left, top right, bottom left, bottom right.
+
+Or if there was an error, it will return an empty string (null).  Use [`$BuildableSnow::LastError`](#error-handling) to check for errors.
 
 ## <a name="error-handling">Error Handling
 
