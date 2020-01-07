@@ -57,7 +57,7 @@ $CreateBrick::LastError = $CreateBrick::Error::None;
 //
 function createBrick ( %data, %pos, %angID, %colorID, %plant, %group, %ignoreStuck, %ignoreFloat )
 {
-	if ( !isObject (%data) )
+	if ( !isObject (%data)  ||  %data.getClassName () !$= "fxDTSBrickData" )
 	{
 		$CreateBrick::LastError = $CreateBrick::Error::DataBlock;
 		return -1;
