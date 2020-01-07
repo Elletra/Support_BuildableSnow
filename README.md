@@ -30,17 +30,17 @@ Destroys the snow grid, either synchronously or asynchronously.
 
 #### <a name="api-raise-snow"></a>`fxDTSBrick::raiseSnow ();`
 
-Flattens brick if it's not already; raises snow brick above it if it is.  Returns a [BuildableSnowError](#error-codes).
+Flattens brick if it's not already; raises snow brick above it if it is.  Returns a [BuildableSnowError](#errors).
 
 ##
 
 #### <a name="api-lower-snow"></a>`fxDTSBrick::lowerSnow ();`
 
-Lowers snow, provided there's no snow above this brick.  Returns a [BuildableSnowError](#error-codes).
+Lowers snow, provided there's no snow above this brick.  Returns a [BuildableSnowError](#errors).
 
-## <a name="error-codes">Error Codes
+## <a name="errors">Errors
 
-Some functions return a `BuildableSnowError`, which is one of the following error codes:
+Some functions return a `BuildableSnowError`, which will be one of the following:
 
 | Variable | Description |
 | -------- | ----------- |
