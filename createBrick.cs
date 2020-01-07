@@ -15,7 +15,7 @@ function BuildableSnow_CreateSnowBrick ( %gridX, %gridY, %gridZ )
 {
 	if ( !BuildableSnow_isValidGridPos (%gridX, %gridY, %gridZ) )
 	{
-		error ("ERROR: BuildableSnow_CreateSnowBrick () - Invalid grid position");
+		$BuildableSnow::LastError = $BuildableSnow::Error::InvalidGridPos;
 		return -1;
 	}
 
@@ -29,6 +29,7 @@ function BuildableSnow_CreateSnowBrick ( %gridX, %gridY, %gridZ )
 
 	if ( !isObject (%brick) )
 	{
+		$BuildableSnow::LastError = $BuildableSnow::Error::CreateBrick;
 		return -1;
 	}
 
@@ -51,8 +52,9 @@ function BuildableSnow_CreateSnowBrick ( %gridX, %gridY, %gridZ )
 	}
 
 	$BuildableSnow::Grid::Brick_[%gridX, %gridY, %gridZ] = %brick;
-
 	%brick.setSnowVertices (1, 1, 1, 1);
+
+	$BuildableSnow::LastError = $BuildableSnow::Error::None;
 
 	return %brick;
 }

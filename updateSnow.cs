@@ -31,6 +31,14 @@ function fxDTSBrick::updateSnowNeighbors ( %this )
 //
 function fxDTSBrick::snowAdapterCheck ( %this, %data )
 {
+	if ( !%this.dataBlock.isSnowBrick )
+	{
+		$BuildableSnow::LastError = $BuildableSnow::Error::NotSnowBrick;
+		return false;
+	}
+
+	$BuildableSnow::LastError = $BuildableSnow::Error::None;
+
 	switch$ ( %data )
 	{
 		// Top left adapter
@@ -96,13 +104,15 @@ function fxDTSBrick::snowAdapterCheck ( %this, %data )
 
 // Updates snow brick datablock and, if needed, surrounding neighbors.
 //
-// @returns {BuildableSnowError}
+// @returns {boolean} Whether or not the operation was successful.  Use $BuildableSnow::LastError
+//                    when checking for errors.
 //
 function fxDTSBrick::updateSnow ( %this )
 {
 	if ( !%this.dataBlock.isSnowBrick )
 	{
-		return $BuildableSnow::Error::NotSnowBrick;
+		$BuildableSnow::LastError = $BuildableSnow::Error::NotSnowBrick;
+		return false;
 	}
 
 	%vertices = %this.getSnowVertices ();
@@ -159,5 +169,7 @@ function fxDTSBrick::updateSnow ( %this )
 	%this.setColliding (%data !$= $BuildableSnow::DataBlock_[0, 0, 0, 0]);
 	%this.setRayCasting (%data !$= $BuildableSnow::DataBlock_[0, 0, 0, 0]);
 
-	return $BuildableSnow::Error::None;
+	$BuildableSnow::LastError = $BuildableSnow::Error::None;
+
+	return true;
 }

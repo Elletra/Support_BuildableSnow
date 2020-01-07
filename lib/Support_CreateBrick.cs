@@ -21,7 +21,7 @@ if ( $CreateBrick::Version >= 1 )
 
 $CreateBrick::Version = 1;
 
-//* Error Codes -- Do not change these. *//
+//* Error codes -- Do not change these. *//
 
 $CreateBrick::Error::None          = 0;
 $CreateBrick::Error::PlantOverlap  = 1;
@@ -33,10 +33,7 @@ $CreateBrick::Error::DataBlock     = 6;
 $CreateBrick::Error::AngleID       = 7;
 $CreateBrick::Error::BrickGroup    = 8;
 
-if ( $CreateBrick::LastError $= "" )
-{
-	$CreateBrick::LastError = $CreateBrick::Error::None;
-}
+$CreateBrick::LastError = $CreateBrick::Error::None;
 
 
 // ------------------------------------------------

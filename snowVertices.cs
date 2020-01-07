@@ -1,19 +1,21 @@
 // Sets the brick's snow vertices data.
 //
-// Does not change the brick's datablock (@see fxDTSBrick::updateSnow)
+// This does not change the brick's datablock (@see fxDTSBrick::updateSnow).
 //
 // @param {boolean} topLeft
 // @param {boolean} topRight
 // @param {boolean} bottomLeft
 // @param {boolean} bottomRight
 //
-// @returns {BuildableSnowError}
+// @returns {boolean} Whether or not the operation was successful.  Use $BuildableSnow::LastError
+//                    when checking for errors.
 //
 function fxDTSBrick::setSnowVertices ( %this, %topLeft, %topRight, %bottomLeft, %bottomRight )
 {
 	if ( !%this.dataBlock.isSnowBrick )
 	{
-		return $BuildableSnow::Error::NotSnowBrick;
+		$BuildableSnow::LastError = $BuildableSnow::Error::NotSnowBrick;
+		return false;
 	}
 
 	%left   = %this.snowVertexLeft;
@@ -30,7 +32,9 @@ function fxDTSBrick::setSnowVertices ( %this, %topLeft, %topRight, %bottomLeft, 
 	$BuildableSnow::Grid::Vertex_[%left,  %bottom, %z] = %bottomLeft;
 	$BuildableSnow::Grid::Vertex_[%right, %bottom, %z] = %bottomRight;
 
-	return $BuildableSnow::Error::None;
+	$BuildableSnow::LastError = $BuildableSnow::Error::None;
+
+	return true;
 }
 
 // Returns the actual snow vertex data.
@@ -38,11 +42,18 @@ function fxDTSBrick::setSnowVertices ( %this, %topLeft, %topRight, %bottomLeft, 
 // Since the brick's datablock does not always necessarily correspond with the actual vertex data
 // for aesthetic purposes, we want to be able to accurately get the vertex data.
 //
-// @returns {BuildableSnowVertices} A string with the vertices separated by a space in this order:
-//                                  top left, top right, bottom left, bottom right.
+// @returns {BuildableSnowVertices|null} A string with the vertices separated by a space in this order:
+//                                       top left, top right, bottom left, bottom right.
+//                                       Or an empty string (null) if it's not a snow brick.
 //
 function fxDTSBrick::getSnowVertices ( %this )
 {
+	if ( !%this.dataBlock.isSnowBrick )
+	{
+		$BuildableSnow::LastError = $BuildableSnow::Error::NotSnowBrick;
+		return "";
+	}
+
 	%left   = %this.snowVertexLeft;
 	%right  = %this.snowVertexRight;
 	%top    = %this.snowVertexTop;
@@ -55,5 +66,7 @@ function fxDTSBrick::getSnowVertices ( %this )
 	%bottomLeft  = $BuildableSnow::Grid::Vertex_[%left,  %bottom, %z];
 	%bottomRight = $BuildableSnow::Grid::Vertex_[%right, %bottom, %z];
 
-	return %topLeft SPC %topRight SPC %bottomLeft SPC %bottomRight;
+	$BuildableSnow::LastError = $BuildableSnow::Error::None;
+
+	return %topLeft @ " " @ %topRight @ " " @ %bottomLeft @ " " @ %bottomRight;
 }

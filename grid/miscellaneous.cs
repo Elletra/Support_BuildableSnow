@@ -6,11 +6,22 @@
 //
 function BuildableSnow_GetBrick ( %x, %y, %z )
 {
+	$BuildableSnow::LastError = $BuildableSnow::Error::None;
+
 	%brick = $BuildableSnow::Grid::Brick_[%x, %y, %z];
 
 	if ( isObject (%brick) )
 	{
 		return %brick;
+	}
+
+	if ( BuildableSnow_isValidGridPos (%x, %y, %z) )
+	{
+		$BuildableSnow::LastError = $BuildableSnow::Error::BrickNotFound;
+	}
+	else
+	{
+		$BuildableSnow::LastError = $BuildableSnow::Error::InvalidGridPos;
 	}
 
 	return -1;
@@ -34,7 +45,7 @@ function BuildableSnow_GridToWorld ( %x, %y, %z )
 	%worldY =  (%y * (%sizeY / 2));
 	%worldZ =  (%z * (%sizeZ / 5)) + 0.3;
 
-	return %worldX SPC %worldY SPC %worldZ;
+	return %worldX @ " " @ %worldY @ " " @ %worldZ;
 }
 
 // Checks whether or not a grid position is within the grid's bounds.
