@@ -6,22 +6,11 @@
 //
 function BuildableSnow_GetBrick ( %x, %y, %z )
 {
-	$BuildableSnow::LastError = $BuildableSnow::Error::None;
-
 	%brick = $BuildableSnow::Grid::Brick_[%x, %y, %z];
 
 	if ( isObject (%brick) )
 	{
 		return %brick;
-	}
-
-	if ( BuildableSnow_isValidGridPos (%x, %y, %z) )
-	{
-		$BuildableSnow::LastError = $BuildableSnow::Error::BrickNotFound;
-	}
-	else
-	{
-		$BuildableSnow::LastError = $BuildableSnow::Error::InvalidGridPos;
 	}
 
 	return -1;
