@@ -8,6 +8,7 @@ exec ("./lib/Support_CreateBrick.cs");
 exec ("./bricks/datablocks.cs");
 
 exec ("./constants.cs");
+exec ("./globalVariables.cs");
 exec ("./createBrick.cs");
 exec ("./snowVertices.cs");
 exec ("./updateSnow.cs");
