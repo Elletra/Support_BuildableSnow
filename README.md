@@ -79,6 +79,26 @@ A string with the vertices separated by a space in this order: top left, top rig
 
 Or if there was an error, it will return an empty string (null).  Use [`$BuildableSnow::LastError`](#error-handling) to check for errors.
 
+##
+
+#### <a name="api-update-snow"></a> `fxDTSBrick::updateSnow ();`
+
+Updates snow brick datablock and, if needed, surrounding neighbors.
+
+**Returns**  `boolean`
+
+Whether or not the operation was successful.  Use [`$BuildableSnow::LastError`](#error-handling) to check for errors.
+
+##
+
+#### <a name="api-update-snow-neighbors"></a> `fxDTSBrick::updateSnowNeighbors ();`
+
+Updates adjacent neighbor snow bricks.
+
+**Returns**  `boolean`
+
+Whether or not the operation was successful.  Use [`$BuildableSnow::LastError`](#error-handling) to check for errors.
+
 ## <a name="error-handling">Error Handling
 
 If a function returns a value indicating some sort of issue (usually `false`, an empty string, or `-1`), you should check `$BuildableSnow::LastError` to see what error occurred, if any.

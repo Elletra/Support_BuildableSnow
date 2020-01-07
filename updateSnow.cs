@@ -1,4 +1,4 @@
-// Update adjacent neighbor snow bricks.
+// Updates adjacent neighbor snow bricks.
 //
 // @returns {boolean} Whether or not the operation was successful.  Use $BuildableSnow::LastError
 //                    to check for errors.
