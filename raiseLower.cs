@@ -1,42 +1,35 @@
 // Lowers snow, provided there's no snow above this brick.
 //
-// @returns {boolean} Whether or not the operation was successful.  Use $BuildableSnow::LastError
-//                    to check for errors.
+// @returns {BuildableSnowError}
 //
 function fxDTSBrick::lowerSnow ( %this )
 {
 	if ( !%this.dataBlock.isSnowBrick )
 	{
-		$BuildableSnow::LastError = $BuildableSnow::Error::NotSnowBrick;
-		return false;
+		return $BuildableSnow::Error::NotSnowBrick;
 	}
 
 	// Cannot be lowered if there is snow above.
 	if ( !%this.hasEmptySnowSpot (0, 0, 1) )
 	{
-		$BuildableSnow::LastError = $BuildableSnow::Error::HasSnowAbove;
-		return false;
+		return $BuildableSnow::Error::HasSnowAbove;
 	}
 
 	%this.setSnowVertices (0, 0, 0, 0);
 	%this.updateSnow ();
 
-	$BuildableSnow::LastError = $BuildableSnow::Error::None;
-
-	return true;
+	return $BuildableSnow::Error::None;
 }
 
 // Flattens brick if it's not already; raises snow brick above if it is.
 //
-// @returns {boolean} Whether or not the operation was successful.  Use $BuildableSnow::LastError
-//                    to check for errors.
+// @returns {BuildableSnowError}
 //
 function fxDTSBrick::raiseSnow ( %this )
 {
 	if ( !%this.dataBlock.isSnowBrick )
 	{
-		$BuildableSnow::LastError = $BuildableSnow::Error::NotSnowBrick;
-		return false;
+		return $BuildableSnow::Error::NotSnowBrick;
 	}
 
 	//* Make sure the surrounding bricks below even exist to support raising it. *//
@@ -49,8 +42,7 @@ function fxDTSBrick::raiseSnow ( %this )
 			{
 				if ( %this.hasEmptySnowSpot (%w, %l, -1)  &&  %this.hasSnowNeighbor (%w, %l, -1) )
 				{
-					$BuildableSnow::LastError = $BuildableSnow::Error::NoSnowBelow;
-					return false;
+					return $BuildableSnow::Error::NoSnowBelow;
 				}
 			}
 		}
@@ -82,7 +74,5 @@ function fxDTSBrick::raiseSnow ( %this )
 		%this.updateSnowNeighbors ();
 	}
 
-	$BuildableSnow::LastError = $BuildableSnow::Error::None;
-
-	return true;
+	return $BuildableSnow::Error::None;
 }

@@ -15,7 +15,7 @@ function BuildableSnow_CreateSnowBrick ( %gridX, %gridY, %gridZ )
 {
 	if ( !BuildableSnow_isValidGridPos (%gridX, %gridY, %gridZ) )
 	{
-		$BuildableSnow::LastError = $BuildableSnow::Error::InvalidGridPos;
+		BuildableSnow_DebugError ("Invalid grid position: " @ %gridX @ ", " @ %gridY @ ", " @ %gridZ);
 		return -1;
 	}
 
@@ -31,7 +31,7 @@ function BuildableSnow_CreateSnowBrick ( %gridX, %gridY, %gridZ )
 
 	if ( !isObject (%brick) )
 	{
-		$BuildableSnow::LastError = $BuildableSnow::Error::CreateBrick;
+		BuildableSnow_DebugError ("Error creating brick (code: " @ $CreateBrick::LastError @ ")");
 		return -1;
 	}
 
@@ -54,7 +54,6 @@ function BuildableSnow_CreateSnowBrick ( %gridX, %gridY, %gridZ )
 	// its immediate neighbors.
 	//
 	// See fxDTSBrick::setSnowVertices() and fxDTSBrick::updateSnow() to see how this works.
-	//
 
 	//* The brick's position in the "tile" grid. *//
 
@@ -90,8 +89,6 @@ function BuildableSnow_CreateSnowBrick ( %gridX, %gridY, %gridZ )
 	%brick.setSnowVertices (%topLeft, %topRight, %bottomLeft, %bottomRight);
 
 	// The brick's datablock already corresponds to its vertices so we don't call updateSnow()
-
-	$BuildableSnow::LastError = $BuildableSnow::Error::None;
 
 	return %brick;
 }

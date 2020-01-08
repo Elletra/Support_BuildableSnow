@@ -7,15 +7,13 @@
 // @param {boolean} bottomLeft  - Height of the bottom left vertex (0 or 1).
 // @param {boolean} bottomRight - Height of the bottom right vertex (0 or 1).
 //
-// @returns {boolean} Whether or not the operation was successful.  Use $BuildableSnow::LastError
-//                    to check for errors.
+// @returns {BuildableSnowError}
 //
 function fxDTSBrick::setSnowVertices ( %this, %topLeft, %topRight, %bottomLeft, %bottomRight )
 {
 	if ( !%this.dataBlock.isSnowBrick )
 	{
-		$BuildableSnow::LastError = $BuildableSnow::Error::NotSnowBrick;
-		return false;
+		return $BuildableSnow::Error::NotSnowBrick;
 	}
 
 	%left   = %this.snowVertexLeft;
@@ -32,9 +30,7 @@ function fxDTSBrick::setSnowVertices ( %this, %topLeft, %topRight, %bottomLeft, 
 	$BuildableSnow::Grid::Vertex_[%left,  %bottom, %z] = %bottomLeft;
 	$BuildableSnow::Grid::Vertex_[%right, %bottom, %z] = %bottomRight;
 
-	$BuildableSnow::LastError = $BuildableSnow::Error::None;
-
-	return true;
+	return $BuildableSnow::Error::None;
 }
 
 // Gets the actual snow vertex data.
@@ -50,7 +46,6 @@ function fxDTSBrick::getSnowVertices ( %this )
 {
 	if ( !%this.dataBlock.isSnowBrick )
 	{
-		$BuildableSnow::LastError = $BuildableSnow::Error::NotSnowBrick;
 		return "";
 	}
 
@@ -65,8 +60,6 @@ function fxDTSBrick::getSnowVertices ( %this )
 	%topRight    = $BuildableSnow::Grid::Vertex_[%right, %top,    %z];
 	%bottomLeft  = $BuildableSnow::Grid::Vertex_[%left,  %bottom, %z];
 	%bottomRight = $BuildableSnow::Grid::Vertex_[%right, %bottom, %z];
-
-	$BuildableSnow::LastError = $BuildableSnow::Error::None;
 
 	return %topLeft @ " " @ %topRight @ " " @ %bottomLeft @ " " @ %bottomRight;
 }

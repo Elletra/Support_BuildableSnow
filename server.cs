@@ -14,3 +14,4 @@ exec ("./snowVertices.cs");
 exec ("./updateSnow.cs");
 exec ("./raiseLower.cs");
 exec ("./grid/exec.cs");
+exec ("./debug.cs");

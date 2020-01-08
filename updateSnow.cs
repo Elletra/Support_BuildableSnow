@@ -1,14 +1,12 @@
 // Updates adjacent neighbor snow bricks.
 //
-// @returns {boolean} Whether or not the operation was successful.  Use $BuildableSnow::LastError
-//                    to check for errors.
+// @returns {BuildableSnowError}
 //
 function fxDTSBrick::updateSnowNeighbors ( %this )
 {
 	if ( !%this.dataBlock.isSnowBrick )
 	{
-		$BuildableSnow::LastError = $BuildableSnow::Error::NotSnowBrick;
-		return false;
+		return $BuildableSnow::Error::NotSnowBrick;
 	}
 
 	for ( %w = -1;  %w <= 1;  %w++ )
@@ -24,22 +22,18 @@ function fxDTSBrick::updateSnowNeighbors ( %this )
 		}
 	}
 
-	$BuildableSnow::LastError = $BuildableSnow::Error::None;
-
-	return true;
+	return $BuildableSnow::Error::None;
 }
 
 // Updates snow brick datablock and, if needed, surrounding neighbors.
 //
-// @returns {boolean} Whether or not the operation was successful.  Use $BuildableSnow::LastError
-//                    to check for errors.
+// @returns {BuildableSnowError}
 //
 function fxDTSBrick::updateSnow ( %this )
 {
 	if ( !%this.dataBlock.isSnowBrick )
 	{
-		$BuildableSnow::LastError = $BuildableSnow::Error::NotSnowBrick;
-		return false;
+		return $BuildableSnow::Error::NotSnowBrick;
 	}
 
 	%vertices = %this.getSnowVertices ();
@@ -102,9 +96,7 @@ function fxDTSBrick::updateSnow ( %this )
 	%this.setColliding (%data !$= $BuildableSnow::DataBlock_[0, 0, 0, 0]);
 	%this.setRayCasting (%data !$= $BuildableSnow::DataBlock_[0, 0, 0, 0]);
 
-	$BuildableSnow::LastError = $BuildableSnow::Error::None;
-
-	return true;
+	return $BuildableSnow::Error::None;
 }
 
 // Checks if a brick can be set to an adapter datablock, based on two adjacent neighbors relative
@@ -125,11 +117,8 @@ function fxDTSBrick::snowAdapterCheck ( %this, %data )
 {
 	if ( !%this.dataBlock.isSnowBrick )
 	{
-		$BuildableSnow::LastError = $BuildableSnow::Error::NotSnowBrick;
 		return false;
 	}
-
-	$BuildableSnow::LastError = $BuildableSnow::Error::None;
 
 	switch$ ( %data )
 	{
