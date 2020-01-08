@@ -27,7 +27,7 @@ function BuildableSnow_CreateSnowBrick ( %gridX, %gridY, %gridZ )
 	%color    = $BuildableSnow::SnowColorID;
 	%group    = $BuildableSnow::SnowBrickGroup;
 
-	%brick = createBrick (%data, %position, %angleID, %color, 1, %group, 0, 1);
+	%brick = createNewBrick (%data, %position, %angleID, %color, 1, %group, 0, 1);
 
 	if ( !isObject (%brick) )
 	{

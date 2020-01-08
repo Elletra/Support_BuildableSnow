@@ -58,7 +58,7 @@ $CreateBrick::DebugMode = false;
 //
 // @returns {fxDTSBrick|-1} Returns -1 if there was an issue creating or planting the brick.
 //
-function createBrick ( %data, %pos, %angID, %color, %plant, %group, %ignoreStuck, %ignoreFloat )
+function createNewBrick ( %data, %pos, %angID, %color, %plant, %group, %ignoreStuck, %ignoreFloat )
 {
 	if ( !isObject (%data)  ||  %data.getClassName () !$= "fxDTSBrickData" )
 	{
@@ -150,6 +150,6 @@ function createBrickError ( %errorCode, %errorMessage )
 
 	if ( $CreateBrick::DebugMode )
 	{
-		error ("ERROR: createBrick () - " @ %errorMessage);
+		error ("ERROR: createNewBrick () - " @ %errorMessage);
 	}
 }
