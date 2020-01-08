@@ -1,18 +1,18 @@
-// ------------------------------------------------------------------------
+// ----------------------------------------------------------------------
 //  Title:   Create Brick
 //  Author:  Electrk
 //  Version: 1
 //  Updated: January 7th, 2020
-// ------------------------------------------------------------------------
+// ----------------------------------------------------------------------
 //  Utility function for brick creation.
-// ------------------------------------------------------------------------
+// ----------------------------------------------------------------------
 //  Include this code in your own scripts as an *individual file* called
 //  "Support_CreateBrick.cs".  Do not modify this code.
-// ------------------------------------------------------------------------
+// ----------------------------------------------------------------------
 //  This function does not print error messages.  Instead, it sets the
-//  $CreateBrick::LastError variable to a value and returns -1.  Use this
-//  variable to check for errors.
-// ------------------------------------------------------------------------
+//  $CreateBrick::LastError variable to an error code and returns -1.
+//  Use this variable to check for errors.
+// ----------------------------------------------------------------------
 
 if ( $CreateBrick::Version >= 1 )
 {
