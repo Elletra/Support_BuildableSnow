@@ -32,7 +32,7 @@ function fxDTSBrick::hasSnowNeighbor ( %this, %x, %y, %z )
 }
 
 // Whether or not there's an empty spot at the position (x, y, z) relative to this brick.
-// "Empty spot" meaning either an invisible brick, or a lack of a brick.
+// "Empty spot" meaning either an empty snow brick, or the lack of a brick.
 //
 // @param {integer} x
 // @param {integer} y
