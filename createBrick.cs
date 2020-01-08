@@ -15,7 +15,9 @@ function BuildableSnow_CreateSnowBrick ( %gridX, %gridY, %gridZ )
 {
 	if ( !BuildableSnow_isValidGridPos (%gridX, %gridY, %gridZ) )
 	{
-		BuildableSnow_DebugError ("Invalid grid position: " @ %gridX @ ", " @ %gridY @ ", " @ %gridZ);
+		%errorMsg = "Invalid grid position: (" @ %gridX @ ", " @ %gridY @ ", " @ %gridZ @ ")";
+		BuildableSnow_DebugError (%errorMsg);
+
 		return -1;
 	}
 
