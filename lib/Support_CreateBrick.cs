@@ -1,17 +1,19 @@
-// ----------------------------------------------------------------------
+// ------------------------------------------------------------------------
 //  Title:   Create Brick
 //  Author:  Electrk
 //  Version: 1
 //  Updated: January 7th, 2020
-// ----------------------------------------------------------------------
+// ------------------------------------------------------------------------
 //  Utility function for brick creation.
-// ----------------------------------------------------------------------
+// ------------------------------------------------------------------------
 //  Include this code in your own scripts as an *individual file* called
 //  "Support_CreateBrick.cs".  Do not modify this code.
-// ----------------------------------------------------------------------
-//  Use $CreateBrick::LastError to check for errors.
-//  Use $CreateBrick::DebugMode to enable debug messages.
-// ----------------------------------------------------------------------
+// ------------------------------------------------------------------------
+//  Notes:
+//    + Use $CreateBrick::LastError to check for errors.
+//    + Use $CreateBrick::DebugMode to enable debug messages.
+// ------------------------------------------------------------------------
+
 
 if ( $CreateBrick::Version >= 1 )
 {
