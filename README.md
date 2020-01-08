@@ -172,3 +172,42 @@ Some functions return a `BuildableSnowError`, which will be one of the following
 | $BuildableSnow::Error::NotSnowBrick | The brick we're trying to operate on is not a snow brick. |
 | $BuildableSnow::Error::HasSnowAbove | The brick we're trying to operate on has snow above it. |
 | $BuildableSnow::Error::NoSnowBelow | The brick we're trying to operate on doesn't have the supporting snow required. |
+
+## <a name="configuration-variables">Configuration Variables
+
+This mod was written to be as flexible as possible.  As such, there are many global variables that you can change if you so wish.
+
+If you want to change the snow brick's brick group, color, or angle ID:
+
+| Variable | Description | Default Value |
+| -------- | ----------- | ------------- |
+| $BuildableSnow::SnowBrickGroup | The brick group to add all snow bricks to. | BrickGroup_888888 |
+| $BuildableSnow::SnowColorID | The color ID to set all snow bricks to. | The closest color to "1 1 1 1" |
+| $BuildableSnow::SnowAngleID | The angle ID to create all snow bricks with. | 3 |
+
+##
+
+If you want to change the tick rates for async grid creation/destruction:
+
+| Variable | Description | Default Value |
+| -------- | ----------- | ------------- |
+| $BuildableSnow::CreateGridTickRate | The tick rate of async grid creation in milliseconds. | 0 |
+| $BuildableSnow::DestroyGridTickRate | The tick rate of async grid destruction in milliseconds. | 0 |
+
+##
+
+If you want to use custom bricks with this mod, you'll have to change these:
+
+| Variable | Description | Default Value |
+| -------- | ----------- | ------------- |
+| $BuildableSnow::DataBlock_* | Get a datablock from a certain configuration of vertices.  See [`config.cs`](https://github.com/Electrk/Support_BuildableSnow/blob/master/config.cs) for all of them. | |
+| $BuildableSnow::CornerToAdapter_* | A quick way to get a respective adapter brick from corner vertices.  See [`config.cs`](https://github.com/Electrk/Support_BuildableSnow/blob/master/config.cs) for all of them. | |
+| $BuildableSnow::DefaultDataBlock | The default datablock to create snow bricks as. | brick_snow_middle_middle_data |
+
+##
+
+If you want to enable debug mode and see error messages:
+
+| Variable | Description | Default Value |
+| -------- | ----------- | ------------- |
+| $BuildableSnow::DebugMode | Whether or not to print debug messages. | false |
