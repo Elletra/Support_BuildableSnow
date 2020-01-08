@@ -34,6 +34,8 @@ $BuildableSnow::DataBlock_[1, 1, 1, 0] = brick_snow_bottom_right_adapter_data;
 $BuildableSnow::DataBlock_[0, 1, 1, 0] = brick_snow_top_left_bottom_right_data;
 $BuildableSnow::DataBlock_[1, 0, 0, 1] = brick_snow_top_right_bottom_left_data;
 
+$BuildableSnow::DefaultDataBlock = brick_snow_middle_middle_data;
+
 //* A quick way to get a respective adapter brick from corner vertices. *//
 
 $BuildableSnow::CornerToAdapter_[0, 0, 0, 1] = brick_snow_top_left_adapter_data;

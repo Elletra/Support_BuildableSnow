@@ -26,9 +26,9 @@ function BuildableSnow_GetBrick ( %x, %y, %z )
 //
 function BuildableSnow_GridToWorld ( %x, %y, %z )
 {
-	%sizeX = $BuildableSnow::DataBlock_[1, 1, 1, 1].brickSizeX;
-	%sizeY = $BuildableSnow::DataBlock_[1, 1, 1, 1].brickSizeY;
-	%sizeZ = $BuildableSnow::DataBlock_[1, 1, 1, 1].brickSizeZ;
+	%sizeX = $BuildableSnow::DefaultDataBlock.brickSizeX;
+	%sizeY = $BuildableSnow::DefaultDataBlock.brickSizeY;
+	%sizeZ = $BuildableSnow::DefaultDataBlock.brickSizeZ;
 
 	%worldX = -(%x * (%sizeX / 2));
 	%worldY =  (%y * (%sizeY / 2));

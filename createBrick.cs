@@ -21,7 +21,7 @@ function BuildableSnow_CreateSnowBrick ( %gridX, %gridY, %gridZ )
 
 	//* Everything uses global variables.  No hardcoded values. *//
 
-	%data     = $BuildableSnow::DataBlock_[1, 1, 1, 1];
+	%data     = $BuildableSnow::DefaultDataBlock;
 	%position = BuildableSnow_GridToWorld (%gridX, %gridY, %gridZ);
 	%angleID  = $BuildableSnow::SnowAngleID;
 	%color    = $BuildableSnow::SnowColorID;
@@ -80,9 +80,16 @@ function BuildableSnow_CreateSnowBrick ( %gridX, %gridY, %gridZ )
 
 	$BuildableSnow::Grid::Brick_[%gridX, %gridY, %gridZ] = %brick;
 
-	%brick.setSnowVertices (1, 1, 1, 1);
+	%vertices = $BuildableSnow::DefaultDataBlock.snowVertices;
 
-	// The brick's datablock is already (1, 1, 1, 1) so we don't need to call updateSnow()
+	%topLeft     = getWord (%vertices, 0);
+	%topRight    = getWord (%vertices, 1);
+	%bottomLeft  = getWord (%vertices, 2);
+	%bottomRight = getWord (%vertices, 3);
+
+	%brick.setSnowVertices (%topLeft, %topRight, %bottomLeft, %bottomRight);
+
+	// The brick's datablock already corresponds to its vertices so we don't call updateSnow()
 
 	$BuildableSnow::LastError = $BuildableSnow::Error::None;
 
