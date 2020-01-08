@@ -52,9 +52,7 @@ Destroys the snow grid, either synchronously or asynchronously.
 
 Flattens brick if it's not already; raises snow brick above if it is.
 
-**Returns**  `boolean`
-
-Whether or not the operation was successful.  Use [`$BuildableSnow::LastError`](#error-handling) to check for errors.
+**Returns**  [`BuildableSnowError`](#error-handling)
 
 ##
 
@@ -62,9 +60,7 @@ Whether or not the operation was successful.  Use [`$BuildableSnow::LastError`](
 
 Lowers snow, provided there's no snow above this brick.
 
-**Returns**  `boolean`
-
-Whether or not the operation was successful.  Use [`$BuildableSnow::LastError`](#error-handling) to check for errors.
+**Returns**  [`BuildableSnowError`](#error-handling)
 
 ##
 
@@ -81,9 +77,7 @@ Please note that this does not update the brick's datablock.  You'll normally wa
 | bottomLeft | boolean | Height of the brick's bottom left vertex (only supports 0 or 1). |
 | bottomRight | boolean | Height of the brick's bottom right vertex (only supports 0 or 1). |
 
-**Returns**  `boolean`
-
-Whether or not the operation was successful.  Use [`$BuildableSnow::LastError`](#error-handling) to check for errors.
+**Returns**  [`BuildableSnowError`](#error-handling)
 
 ##
 
@@ -97,7 +91,7 @@ Since the brick's datablock does not always correspond with the actual vertex da
 
 A string with the vertices separated by a space in this order: top left, top right, bottom left, bottom right.
 
-Or if there was an error, it will return an empty string (null).  Use [`$BuildableSnow::LastError`](#error-handling) to check for errors.
+Or if there was an error, it will return an empty string (null).
 
 ##
 
@@ -105,9 +99,7 @@ Or if there was an error, it will return an empty string (null).  Use [`$Buildab
 
 Updates snow brick datablock and, if needed, surrounding neighbors.
 
-**Returns**  `boolean`
-
-Whether or not the operation was successful.  Use [`$BuildableSnow::LastError`](#error-handling) to check for errors.
+**Returns**  [`BuildableSnowError`](#error-handling)
 
 ##
 
@@ -115,15 +107,63 @@ Whether or not the operation was successful.  Use [`$BuildableSnow::LastError`](
 
 Updates adjacent neighbor snow bricks.
 
+**Returns**  [`BuildableSnowError`](#error-handling)
+
+##
+
+#### <a name="api-get-brick"></a> `BuildableSnow_GetBrick (x, y, z);`
+
+Gets a brick at grid (x, y, z).
+
+**Returns**  `fxDTSBrick` or `-1`
+
+If a brick cannot be found, it returns `-1`
+
+##
+
+#### <a name="api-grid-to-world"></a> `BuildableSnow_GridToWorld (x, y, z);`
+
+Converts a grid position to an actual world position.
+
+**Returns**  `Vector3D`
+
+##
+
+#### <a name="api-is-valid-grid-pos"></a> `BuildableSnow_isValidGridPos (x, y, z);`
+
+Checks whether (x, y, z) is a valid grid position.
+
 **Returns**  `boolean`
 
-Whether or not the operation was successful.  Use [`$BuildableSnow::LastError`](#error-handling) to check for errors.
+##
+
+#### <a name="api-get-snow-neighbor"></a> `fxDTSBrick::getSnowNeighbor (x, y, z);`
+
+Gets the brick at the position (x, y, z) relative to this brick, if any.
+
+**Returns**  `fxDTSBrick` or `-1`
+
+If a brick cannot be found, it returns `-1`
+
+##
+
+#### <a name="api-has-snow-neighbor"></a> `fxDTSBrick::hasSnowNeighbor (x, y, z);`
+
+Whether or not there's a brick at the position (x, y, z) relative to this brick.
+
+**Returns**  `boolean`
+
+##
+
+#### <a name="api-has-empty-snow-spot"></a> `fxDTSBrick::hasEmptySnowSpot (x, y, z);`
+
+Whether or not there's an empty spot at the position (x, y, z) relative to this brick.  "Empty spot" meaning either an empty snow brick, or the lack of a brick.
+
+**Returns**  `boolean`
 
 ## <a name="error-handling">Error Handling
 
-If a function returns a value indicating some sort of issue (usually `false`, an empty string, or `-1`), you should check `$BuildableSnow::LastError` to see what error occurred, if any.
-
-Here are all the errors:
+Some functions return a `BuildableSnowError`, which will be one of the following:
 
 | Variable | Description |
 | -------- | ----------- |
@@ -134,19 +174,3 @@ Here are all the errors:
 | $BuildableSnow::Error::NoSnowBelow | The brick we're trying to operate on doesn't have the supporting snow required. |
 | $BuildableSnow::Error::InvalidGridPos | Attempted to use an invalid grid position. |
 | $BuildableSnow::Error::BrickNotFound | No brick was found at this grid position. |
-| $BuildableSnow::Error::CreateBrick | There was an error with `createBrick()` — check `$CreateBrick::LastError` |
-
-This add-on uses `Support_CreateBrick.cs`, which has its own errors with `$CreateBrick::LastError`:
-
-| Variable | Description |
-| -------- | ----------- |
-| $CreateBrick::Error::None | There was no error and brick creation was successful. |
-| $CreateBrick::Error::PlantOverlap | "Overlap" plant error. |
-| $CreateBrick::Error::PlantFloat | "Float" plant error. |
-| $CreateBrick::Error::PlantStuck | "Stuck" plant error. |
-| $CreateBrick::Error::PlantUnstable | "Unstable" plant error. |
-| $CreateBrick::Error::PlantBuried | "Buried" plant error. |
-| $CreateBrick::Error::Generic | There was some miscellaneous/unspecified error creating the brick. |
-| $CreateBrick::Error::DataBlock | Attempted to create a brick with an invalid/nonexistent datablock. |
-| $CreateBrick::Error::AngleID | Attempted to create a brick with an invalid angle ID. |
-| $CreateBrick::Error::BrickGroup | Attempted to create a brick with a nonexistent brick group. |
