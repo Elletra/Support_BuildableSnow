@@ -31,7 +31,7 @@ function BuildableSnow_CreateSnowBrick ( %gridX, %gridY, %gridZ )
 
 	if ( !isObject (%brick) )
 	{
-		BuildableSnow_DebugError ("Error creating brick (code: " @ $CreateBrick::LastError @ ")");
+		BuildableSnow_DebugError ("Could not create brick (error code: " @ $CreateBrick::LastError @ ")");
 		return -1;
 	}
 
