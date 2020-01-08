@@ -60,6 +60,7 @@ $CreateBrick::DebugMode = false;
 //
 function createNewBrick ( %data, %pos, %angID, %color, %plant, %group, %ignoreStuck, %ignoreFloat )
 {
+	// Make sure that the datablock exists and is even a brick datablock.
 	if ( !isObject (%data)  ||  %data.getClassName () !$= "fxDTSBrickData" )
 	{
 		createBrickError ($CreateBrick::Error::DataBlock, "Invalid datablock '" @ %data @ "'");
@@ -101,7 +102,7 @@ function createNewBrick ( %data, %pos, %angID, %color, %plant, %group, %ignoreSt
 		isPlanted = %plant;
 	};
 
-	// If brick creation failed for whatever reason, set the error to generic and return
+	// If brick creation failed for whatever reason, set the error to generic and return.
 	if ( !isObject (%brick) )
 	{
 		createBrickError ($CreateBrick::Error::Generic, "Error creating fxDTSBrick object");
@@ -137,7 +138,7 @@ function createNewBrick ( %data, %pos, %angID, %color, %plant, %group, %ignoreSt
 	return %brick;
 }
 
-// Internal use only.  Do not use this.
+// Internal use only.  Do not use this function.
 //
 // @param {CreateBrickError} errorCode
 // @param {string}           errorMessage
