@@ -18,5 +18,3 @@ $BuildableSnow::Error::Generic        = 1;  // Reserved for possible future use.
 $BuildableSnow::Error::NotSnowBrick   = 2;  // Brick we're trying to operate on isn't a snow brick.
 $BuildableSnow::Error::HasSnowAbove   = 3;  // Brick we're trying to operate on has snow above it.
 $BuildableSnow::Error::NoSnowBelow    = 4;  // Brick doesn't have the supporting snow required.
-$BuildableSnow::Error::InvalidGridPos = 5;  // Attempted to use an invalid grid position.
-$BuildableSnow::Error::BrickNotFound  = 6;  // No brick was found at this grid position.

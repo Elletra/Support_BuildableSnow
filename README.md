@@ -172,5 +172,3 @@ Some functions return a `BuildableSnowError`, which will be one of the following
 | $BuildableSnow::Error::NotSnowBrick | The brick we're trying to operate on is not a snow brick. |
 | $BuildableSnow::Error::HasSnowAbove | The brick we're trying to operate on has snow above it. |
 | $BuildableSnow::Error::NoSnowBelow | The brick we're trying to operate on doesn't have the supporting snow required. |
-| $BuildableSnow::Error::InvalidGridPos | Attempted to use an invalid grid position. |
-| $BuildableSnow::Error::BrickNotFound | No brick was found at this grid position. |
