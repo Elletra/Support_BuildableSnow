@@ -9,9 +9,8 @@
 //  Include this code in your own scripts as an *individual file* called
 //  "Support_CreateBrick.cs".  Do not modify this code.
 // ----------------------------------------------------------------------
-//  This function does not print error messages.  Instead, it sets the
-//  $CreateBrick::LastError variable to an error code and returns -1.
-//  Use this variable to check for errors.
+//  Use $CreateBrick::LastError to check for errors.
+//  Use $CreateBrick::DebugMode to enable debug messages.
 // ----------------------------------------------------------------------
 
 if ( $CreateBrick::Version >= 1 )
@@ -34,9 +33,11 @@ $CreateBrick::Error::DataBlock     = 7;  // Tried to create brick with invalid/n
 $CreateBrick::Error::AngleID       = 8;  // Tried to create brick with an invalid angle ID.
 $CreateBrick::Error::BrickGroup    = 9;  // Tried to create brick with a nonexistent brick group.
 
-// createBrick() does not print errors.  Instead, it sets this variable to one of the above error
-// codes and returns -1.  Use this variable to check for errors.
+// Use this variable to check for errors.
 $CreateBrick::LastError = $CreateBrick::Error::None;
+
+// Whether or not to print debug messages.
+$CreateBrick::DebugMode = false;
 
 // ------------------------------------------------
 
@@ -46,7 +47,7 @@ $CreateBrick::LastError = $CreateBrick::Error::None;
 // @param {fxDTSBrickData} data          - The datablock of the brick we want to create.
 // @param {Vector3D}       pos           - The position we want to create the brick at.
 // @param {AngleID}        angID         - The angle ID (0-3) of the brick (converts to rotation).
-// @param {ColorID}        colorID       - The color ID (0-63) of the brick.
+// @param {ColorID}        color         - The color ID (0-63) of the brick.
 // @param {boolean}        plant         - Whether or not we want the brick to be planted.
 // @param {BrickGroup}     [group]       - The brick group we want to add the brick to.
 //                                         Defaults to BrickGroup_888888.
@@ -57,11 +58,11 @@ $CreateBrick::LastError = $CreateBrick::Error::None;
 //
 // @returns {fxDTSBrick|-1} Returns -1 if there was an issue creating or planting the brick.
 //
-function createBrick ( %data, %pos, %angID, %colorID, %plant, %group, %ignoreStuck, %ignoreFloat )
+function createBrick ( %data, %pos, %angID, %color, %plant, %group, %ignoreStuck, %ignoreFloat )
 {
 	if ( !isObject (%data)  ||  %data.getClassName () !$= "fxDTSBrickData" )
 	{
-		$CreateBrick::LastError = $CreateBrick::Error::DataBlock;
+		createBrickError ($CreateBrick::Error::DataBlock, "Invalid datablock '" @ %data @ "'");
 		return -1;
 	}
 
@@ -73,7 +74,7 @@ function createBrick ( %data, %pos, %angID, %colorID, %plant, %group, %ignoreStu
 		case 3: %rotation = "0 0 -1 90.0002";
 
 		default:
-			$CreateBrick::LastError = $CreateBrick::Error::AngleID;
+			createBrickError ($CreateBrick::Error::AngleID, "Invalid angleID '" @ %angID @ "'");
 			return -1;
 	}
 
@@ -83,7 +84,7 @@ function createBrick ( %data, %pos, %angID, %colorID, %plant, %group, %ignoreStu
 	}
 	else if ( !isObject (%group) )
 	{
-		$CreateBrick::LastError = $CreateBrick::Error::BrickGroup;
+		createBrickError ($CreateBrick::Error::BrickGroup, "Brick group '" @ %group @ "' does not exist");
 		return -1;
 	}
 
@@ -95,7 +96,7 @@ function createBrick ( %data, %pos, %angID, %colorID, %plant, %group, %ignoreStu
 		rotation = %rotation;
 		angleID  = %angID;
 
-		colorID = %colorID;
+		colorID = %color;
 
 		isPlanted = %plant;
 	};
@@ -103,7 +104,7 @@ function createBrick ( %data, %pos, %angID, %colorID, %plant, %group, %ignoreStu
 	// If brick creation failed for whatever reason, set the error to generic and return
 	if ( !isObject (%brick) )
 	{
-		$CreateBrick::LastError = $CreateBrick::Error::Generic;
+		createBrickError ($CreateBrick::Error::Generic, "Error creating fxDTSBrick object");
 		return -1;
 	}
 
@@ -122,7 +123,7 @@ function createBrick ( %data, %pos, %angID, %colorID, %plant, %group, %ignoreStu
 		if ( (%error == 1  &&  !%ignoreStuck)  ||  (%error == 2  &&  !%ignoreFloat)  ||  %error >= 3 )
 		{
 			%brick.delete ();
-			$CreateBrick::LastError = %error;
+			createBrickError (%error, "Error planting brick (code: " @ %error @ ")");
 
 			return -1;
 		}
@@ -134,4 +135,21 @@ function createBrick ( %data, %pos, %angID, %colorID, %plant, %group, %ignoreStu
 	$CreateBrick::LastError = $CreateBrick::Error::None;
 
 	return %brick;
+}
+
+// Internal use only.  Do not use this.
+//
+// @param {CreateBrickError} errorCode
+// @param {string}           errorMessage
+//
+// @private
+//
+function createBrickError ( %errorCode, %errorMessage )
+{
+	$CreateBrick::LastError = %errorCode;
+
+	if ( $CreateBrick::DebugMode )
+	{
+		error ("ERROR: createBrick () - " @ %errorMessage);
+	}
 }
