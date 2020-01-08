@@ -47,7 +47,8 @@ function BuildableSnow_GridToWorld ( %x, %y, %z )
 //
 function BuildableSnow_isValidGridPos ( %x, %y, %z )
 {
-	return %x >= 0  &&  %x < $BuildableSnow::Grid::Width   &&
+	return %x == ~~%x  &&  %y == ~~%y  &&  %z == ~~%z  &&
+	       %x >= 0  &&  %x < $BuildableSnow::Grid::Width   &&
 	       %y >= 0  &&  %y < $BuildableSnow::Grid::Length  &&
 	       %z >= 0  &&  %z < $BuildableSnow::Grid::Height;
 }
