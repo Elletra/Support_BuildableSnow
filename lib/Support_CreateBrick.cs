@@ -2,7 +2,7 @@
 //  Title:   Create Brick
 //  Author:  Electrk
 //  Version: 1
-//  Updated: January 6th, 2020
+//  Updated: January 7th, 2020
 // ------------------------------------------------------------------------
 //  Utility function for brick creation.
 // ------------------------------------------------------------------------
@@ -23,27 +23,29 @@ $CreateBrick::Version = 1;
 
 //* Error codes -- Do not change these. *//
 
-$CreateBrick::Error::None          = 0;
-$CreateBrick::Error::PlantOverlap  = 1;
-$CreateBrick::Error::PlantFloat    = 2;
-$CreateBrick::Error::PlantStuck    = 3;
-$CreateBrick::Error::PlantUnstable = 4;
-$CreateBrick::Error::PlantBuried   = 5;
-$CreateBrick::Error::Generic       = 6;
-$CreateBrick::Error::DataBlock     = 7;
-$CreateBrick::Error::AngleID       = 8;
-$CreateBrick::Error::BrickGroup    = 9;
+$CreateBrick::Error::None          = 0;  // There was no error and brick creation was successful.
+$CreateBrick::Error::PlantOverlap  = 1;  // "Overlap" plant error.
+$CreateBrick::Error::PlantFloat    = 2;  // "Float" plant error.
+$CreateBrick::Error::PlantStuck    = 3;  // "Stuck" plant error.
+$CreateBrick::Error::PlantUnstable = 4;  // "Unstable" plant error.
+$CreateBrick::Error::PlantBuried   = 5;  // "Buried" plant error.
+$CreateBrick::Error::Generic       = 6;  // There was some unspecified error creating the brick.
+$CreateBrick::Error::DataBlock     = 7;  // Tried to create brick with invalid/nonexistent datablock.
+$CreateBrick::Error::AngleID       = 8;  // Tried to create brick with an invalid angle ID.
+$CreateBrick::Error::BrickGroup    = 9;  // Tried to create brick with a nonexistent brick group.
 
+// createBrick() does not print errors.  Instead, it sets this variable to one of the above error
+// codes and returns -1.  Use this variable to check for errors.
 $CreateBrick::LastError = $CreateBrick::Error::None;
 
-
 // ------------------------------------------------
+
 
 // Function for brick creation.
 //
 // @param {fxDTSBrickData} data          - The datablock of the brick we want to create.
 // @param {Vector3D}       pos           - The position we want to create the brick at.
-// @param {AngleID}        angID         - The angle ID (0-3) of the brick.
+// @param {AngleID}        angID         - The angle ID (0-3) of the brick (converts to rotation).
 // @param {ColorID}        colorID       - The color ID (0-63) of the brick.
 // @param {boolean}        plant         - Whether or not we want the brick to be planted.
 // @param {BrickGroup}     [group]       - The brick group we want to add the brick to.
@@ -98,6 +100,7 @@ function createBrick ( %data, %pos, %angID, %colorID, %plant, %group, %ignoreStu
 		isPlanted = %plant;
 	};
 
+	// If brick creation failed for whatever reason, set the error to generic and return
 	if ( !isObject (%brick) )
 	{
 		$CreateBrick::LastError = $CreateBrick::Error::Generic;
@@ -115,6 +118,7 @@ function createBrick ( %data, %pos, %angID, %colorID, %plant, %group, %ignoreStu
 	{
 		%error = %brick.plant ();
 
+		// Any value other than 0 returned from plant() means an error occurred.
 		if ( (%error == 1  &&  !%ignoreStuck)  ||  (%error == 2  &&  !%ignoreFloat)  ||  %error >= 3 )
 		{
 			%brick.delete ();
