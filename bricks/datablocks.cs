@@ -4,6 +4,14 @@
 // Bricks also purposely have blank categories and subcategories to prevent them from showing up in
 // the brick menu.  This add-on also prevents players from trying to get around this in package.cs.
 
+// snowBrickTypes:
+//   +- empty (empty snow brick)
+//   +- middle (middle snow brick)
+//   +- corner (top left, top right, bottom left, and bottom right)
+//   +- ramp (top middle, middle left, middle right, and bottom middle)
+//   +- adapter (top left adapter, top right adapter, bottom left adapter, and bottom right adapter)
+//   +- doubleRamp (top left bottom right and top right bottom left)
+
 datablock fxDTSBrickData (brick_snow_empty_data)
 {
 	brickFile   = "./brickFiles/empty.blb";

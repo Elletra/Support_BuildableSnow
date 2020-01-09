@@ -210,7 +210,7 @@ If you want to make custom bricks for this mod, you'll have to make 16 bricks of
 
 ![](https://i.imgur.com/0Ae57QH.png)
 
-These are the 16 required bricks.  You'll notice that #16 is above an empty stud.  This is the empty brick, which is what bricks get set to when all four vertex heights are `0`.
+These are the 16 required brick datablocks.  You'll notice that #16 is above an empty stud.  This is the empty brick, which is what bricks get set to when all four vertex heights are `0`.
 
 Since Blockland has built-in, hardcoded effects for planting bricks, we have to use `setDataBlock()` for smooth, instant terrain sculpting.  This empty brick **_must be the same size as the rest of the bricks_**.
 
@@ -220,7 +220,7 @@ The vertex data for each of the bricks.  Blue means a vertex height of `0` and r
 
 ![](https://i.imgur.com/fmb9Kn5.png)
 
-The names of all the types of bricks.  Note the direction of north.
+The names of all the bricks.  Note the direction of north.
 
 ##
 
@@ -231,3 +231,22 @@ Once you have your bricks made, you'll have to set these in your mod to replace 
 | $BuildableSnow::DataBlock_* | Get a datablock from a certain configuration of vertices.  See [`config.cs`](https://github.com/Electrk/Support_BuildableSnow/blob/master/config.cs) for all of them. | See [`config.cs`](https://github.com/Electrk/Support_BuildableSnow/blob/master/config.cs). |
 | $BuildableSnow::CornerToAdapter_* | A quick way to get a respective adapter brick from corner vertices.  See [`config.cs`](https://github.com/Electrk/Support_BuildableSnow/blob/master/config.cs) for all of them. | See [`config.cs`](https://github.com/Electrk/Support_BuildableSnow/blob/master/config.cs). |
 | $BuildableSnow::DefaultDataBlock | The default datablock to create snow bricks as. | brick_snow_middle_middle_data |
+
+And set the following properties to each of the datablocks:
+
+| Property | Type | Description |
+| -------- | ---- | ----------- |
+| isSnowBrick | boolean | Whether or not this is a snow brick datablock (set to `true`). |
+| snowBrickType | string | The type of snow brick this datablock is. |
+| snowVertices | BuildableSnowVertices | Four vertex heights that correspond to this datablock. |
+
+Here are the six snow brick types:
+
+| Type | Bricks |
+| ---- | ------ |
+| empty | Empty snow brick. |
+| middle | Middle snow brick. |
+| corner | Top left, top right, bottom left, and bottom right snow bricks. |
+| ramp | Top middle, middle left, middle right, and bottom middle snow bricks. |
+| adapter | Top left adapter, top right adapter, bottom left adapter, and bottom right adapter snow bricks. |
+| doubleRamp | "Top left bottom right" and "top right bottom left" snow bricks. |
