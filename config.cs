@@ -8,9 +8,9 @@
 
 $BuildableSnow::SnowBrickGroup = BrickGroup_888888;
 $BuildableSnow::SnowColorID    = getClosestPaintColor ("1 1 1 1");
-$BuildableSnow::SnowAngleID    = 3;
+$BuildableSnow::SnowAngleID    = 0;
 
-//* Tick rates of async grid creation/destruction. *//
+//* Tick rates of async grid creation/destruction (in milliseconds). *//
 
 $BuildableSnow::CreateGridTickRate  = 0;
 $BuildableSnow::DestroyGridTickRate = 0;
