@@ -173,9 +173,9 @@ Some functions return a `BuildableSnowError`, which will be one of the following
 | $BuildableSnow::Error::NotInGrid | The brick we're trying to operate on is not in the snow grid. |
 | $BuildableSnow::Error::HasSnowAbove | The brick we're trying to operate on has snow above it. |
 | $BuildableSnow::Error::NoSnowBelow | The brick we're trying to operate on doesn't have the supporting snow required. |
-| $BuildableSnow::Error::InvalidGridPos | The grid position you attempted to use is invalid. |
+| $BuildableSnow::Error::InvalidGridPos | The grid position we attempted to use is invalid. |
 
-## <a name="configuration-variables">Configuration Variables
+## <a name="configurable-variables">Configurable Variables
 
 This mod was written to be as flexible as possible.  As such, there are many global variables that you can change if you so wish.
 
@@ -193,8 +193,8 @@ If you want to change the tick rates for async grid creation/destruction:
 
 | Variable | Description | Default Value |
 | -------- | ----------- | ------------- |
-| $BuildableSnow::CreateGridTickRate | The tick rate of async grid creation in milliseconds. | 0 |
-| $BuildableSnow::DestroyGridTickRate | The tick rate of async grid destruction in milliseconds. | 0 |
+| $BuildableSnow::CreateGridTickRate | The tick rate of async grid creation (in milliseconds). | 0 |
+| $BuildableSnow::DestroyGridTickRate | The tick rate of async grid destruction (in milliseconds). | 0 |
 
 ##
 

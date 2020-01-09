@@ -11,6 +11,7 @@ datablock fxDTSBrickData (brick_snow_empty_data)
 	subcategory = "";
 	uiName      = "Empty";
 
+	// If you want to make your own snow bricks, these three properties are required.
 	isSnowBrick   = true;
 	snowBrickType = "empty";
 	snowVertices  = "0 0 0 0";
