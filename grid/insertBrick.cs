@@ -46,7 +46,6 @@ function fxDTSBrick::insertIntoSnowGrid ( %this, %gridX, %gridY, %gridZ )
 	// its immediate neighbors.
 	//
 	// See fxDTSBrick::setSnowVertices() and fxDTSBrick::updateSnow() to see how this works.
-	//
 
 	if ( !BuildableSnowBrickset.isMember (%this) )
 	{
@@ -66,7 +65,7 @@ function fxDTSBrick::insertIntoSnowGrid ( %this, %gridX, %gridY, %gridZ )
 	%this.snowVertexTop    = %gridY;      // Topmost Y vertex coordinate
 	%this.snowVertexBottom = %gridY + 1;  // Bottommost Y vertex coordinate
 
-	//* If there's already a brick at this position, delete it. *//
+	//* If there's already a brick at this position (and it's not us somehow), delete it. *//
 
 	%existingBrick = $BuildableSnow::Grid::Brick_[%gridX, %gridY, %gridZ];
 
