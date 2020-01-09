@@ -170,8 +170,10 @@ Some functions return a `BuildableSnowError`, which will be one of the following
 | $BuildableSnow::Error::None | There was no error and the operation was successful. |
 | $BuildableSnow::Error::Generic | Reserved for possible future use.  Currently unused. |
 | $BuildableSnow::Error::NotSnowBrick | The brick we're trying to operate on is not a snow brick. |
+| $BuildableSnow::Error::NotInGrid | The brick we're trying to operate on is not in the snow grid. |
 | $BuildableSnow::Error::HasSnowAbove | The brick we're trying to operate on has snow above it. |
 | $BuildableSnow::Error::NoSnowBelow | The brick we're trying to operate on doesn't have the supporting snow required. |
+| $BuildableSnow::Error::InvalidGridPos | The grid position you attempted to use is invalid. |
 
 ## <a name="configuration-variables">Configuration Variables
 

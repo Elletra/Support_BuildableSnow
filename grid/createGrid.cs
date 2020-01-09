@@ -42,7 +42,7 @@ function BuildableSnow_CreateGrid ( %width, %length, %height, %useAsync, %asyncC
 		{
 			for ( %z = 0;  %z < $BuildableSnow::Grid::Height;  %z++ )
 			{
-				BuildableSnow_PlaceGridBrick (%x, %y, %z);
+				BuildableSnow_CreateSnowBrick (%x, %y, %z);
 			}
 		}
 	}
@@ -59,7 +59,7 @@ function BuildableSnow_CreateGrid ( %width, %length, %height, %useAsync, %asyncC
 //
 function BuildableSnow_CreateGrid_Tick ( %x, %y, %z, %asyncCallback )
 {
-	BuildableSnow_PlaceGridBrick (%x, %y, %z);
+	BuildableSnow_CreateSnowBrick (%x, %y, %z);
 
 	cancel ($BuildableSnow::CreateGridTick);
 
@@ -92,24 +92,4 @@ function BuildableSnow_CreateGrid_Tick ( %x, %y, %z, %asyncCallback )
 
 	$BuildableSnow::CreateGridTick = schedule ($BuildableSnow::CreateGridTickRate, MissionCleanup,
 		BuildableSnow_CreateGrid_Tick, %x, %y, %z, %asyncCallback);
-}
-
-// Simple wrapper function used by both CreateGrid functions to create and plant snow bricks.
-//
-// @param {integer} x
-// @param {integer} y
-// @param {integer} z
-//
-// @returns {fxDTSBrick|-1} Returns -1 if there was an issue creating or planting the brick.
-//
-function BuildableSnow_PlaceGridBrick ( %x, %y, %z )
-{
-	%brick = BuildableSnow_CreateSnowBrick (%x, %y, %z);
-
-	if ( isObject (%brick) )
-	{
-		%brick.updateSnow ();
-	}
-
-	return %brick;
 }

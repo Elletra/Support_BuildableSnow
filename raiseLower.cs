@@ -9,6 +9,11 @@ function fxDTSBrick::lowerSnow ( %this )
 		return $BuildableSnow::Error::NotSnowBrick;
 	}
 
+	if ( !%this.isInSnowGrid )
+	{
+		return $BuildableSnow::Error::NotInGrid;
+	}
+
 	// Cannot be lowered if there is snow above.
 	if ( !%this.hasEmptySnowSpot (0, 0, 1) )
 	{
@@ -30,6 +35,11 @@ function fxDTSBrick::raiseSnow ( %this )
 	if ( !%this.dataBlock.isSnowBrick )
 	{
 		return $BuildableSnow::Error::NotSnowBrick;
+	}
+
+	if ( !%this.isInSnowGrid )
+	{
+		return $BuildableSnow::Error::NotInGrid;
 	}
 
 	//* Make sure the surrounding bricks below even exist to support raising it. *//

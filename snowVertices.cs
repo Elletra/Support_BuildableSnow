@@ -16,6 +16,11 @@ function fxDTSBrick::setSnowVertices ( %this, %topLeft, %topRight, %bottomLeft, 
 		return $BuildableSnow::Error::NotSnowBrick;
 	}
 
+	if ( !%this.isInSnowGrid )
+	{
+		return $BuildableSnow::Error::NotInGrid;
+	}
+
 	%left   = %this.snowVertexLeft;
 	%right  = %this.snowVertexRight;
 	%top    = %this.snowVertexTop;
@@ -38,13 +43,11 @@ function fxDTSBrick::setSnowVertices ( %this, %topLeft, %topRight, %bottomLeft, 
 // Since the brick's datablock does not always correspond with the actual vertex data for aesthetic
 // purposes, we want to be able to accurately get the vertex data.
 //
-// @returns {BuildableSnowVertices|null} A string with vertices separated by a space in this order:
-//                                       top left, top right, bottom left, bottom right.
-//                                       Or an empty string (null) if it's not a snow brick.
+// @returns {BuildableSnowVertices|null} Returns empty string (null) if not a snow brick or not in grid.
 //
 function fxDTSBrick::getSnowVertices ( %this )
 {
-	if ( !%this.dataBlock.isSnowBrick )
+	if ( !%this.dataBlock.isSnowBrick  ||  !%this.isInSnowGrid )
 	{
 		return "";
 	}

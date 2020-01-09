@@ -9,6 +9,11 @@ function fxDTSBrick::updateSnowNeighbors ( %this )
 		return $BuildableSnow::Error::NotSnowBrick;
 	}
 
+	if ( !%this.isInSnowGrid )
+	{
+		return $BuildableSnow::Error::NotInGrid;
+	}
+
 	for ( %w = -1;  %w <= 1;  %w++ )
 	{
 		for ( %l = -1;  %l <= 1;  %l++ )
@@ -34,6 +39,11 @@ function fxDTSBrick::updateSnow ( %this )
 	if ( !%this.dataBlock.isSnowBrick )
 	{
 		return $BuildableSnow::Error::NotSnowBrick;
+	}
+
+	if ( !%this.isInSnowGrid )
+	{
+		return $BuildableSnow::Error::NotInGrid;
 	}
 
 	%vertices = %this.getSnowVertices ();
@@ -117,6 +127,13 @@ function fxDTSBrick::snowAdapterCheck ( %this, %data )
 {
 	if ( !%this.dataBlock.isSnowBrick )
 	{
+		BuildableSnow_DebugError ("Brick " @ %this.getID () @ " is not a snow brick!");
+		return false;
+	}
+
+	if ( !%this.isInSnowGrid )
+	{
+		BuildableSnow_DebugError ("Brick " @ %this.getID () @ " is not in the snow grid!");
 		return false;
 	}
 

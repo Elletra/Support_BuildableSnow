@@ -8,6 +8,18 @@
 //
 function fxDTSBrick::getSnowNeighbor ( %this, %x, %y, %z )
 {
+	if ( !%this.dataBlock.isSnowBrick )
+	{
+		BuildableSnow_DebugError ("Brick " @ %this.getID () @ " is not a snow brick!");
+		return -1;
+	}
+
+	if ( !%this.isInSnowGrid )
+	{
+		BuildableSnow_DebugError ("Brick " @ %this.getID () @ " is not in the snow grid!");
+		return -1;
+	}
+
 	%neighborX = %this.snowGridX + %x;
 	%neighborY = %this.snowGridY + %y;
 	%neighborZ = %this.snowGridZ + %z;
