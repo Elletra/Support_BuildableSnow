@@ -4,9 +4,6 @@
 // the $BuildableSnow::DataBlock_* and $BuildableSnow::CornerToAdapter_* variables.
 //
 
-// Whether or not to print debug messages.
-$BuildableSnow::DebugMode = false;
-
 //* Variables related to brick planting. *//
 
 $BuildableSnow::SnowBrickGroup = BrickGroup_888888;

@@ -1,3 +1,7 @@
+// Whether or not to print debug messages.
+$BuildableSnow::DebugMode = false;
+
+
 // @param {string} message
 function BuildableSnow_DebugMessage ( %message )
 {
