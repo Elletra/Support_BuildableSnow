@@ -198,16 +198,6 @@ If you want to change the tick rates for async grid creation/destruction:
 
 ##
 
-If you want to use custom bricks with this mod, you'll have to change these:
-
-| Variable | Description | Default Value |
-| -------- | ----------- | ------------- |
-| $BuildableSnow::DataBlock_* | Get a datablock from a certain configuration of vertices.  See [`config.cs`](https://github.com/Electrk/Support_BuildableSnow/blob/master/config.cs) for all of them. | |
-| $BuildableSnow::CornerToAdapter_* | A quick way to get a respective adapter brick from corner vertices.  See [`config.cs`](https://github.com/Electrk/Support_BuildableSnow/blob/master/config.cs) for all of them. | |
-| $BuildableSnow::DefaultDataBlock | The default datablock to create snow bricks as. | brick_snow_middle_middle_data |
-
-##
-
 If you want to enable debug mode and see error messages:
 
 | Variable | Description | Default Value |
@@ -231,3 +221,13 @@ The vertex data for each of the bricks.  Blue means a vertex height of `0` and r
 ![](https://i.imgur.com/fmb9Kn5.png)
 
 The names of all the types of bricks.  Note the direction of north.
+
+##
+
+Once you have your bricks made, you'll have to set these in your mod to replace the default bricks:
+
+| Variable | Description | Default Value |
+| -------- | ----------- | ------------- |
+| $BuildableSnow::DataBlock_* | Get a datablock from a certain configuration of vertices.  See [`config.cs`](https://github.com/Electrk/Support_BuildableSnow/blob/master/config.cs) for all of them. | See [`config.cs`](https://github.com/Electrk/Support_BuildableSnow/blob/master/config.cs). |
+| $BuildableSnow::CornerToAdapter_* | A quick way to get a respective adapter brick from corner vertices.  See [`config.cs`](https://github.com/Electrk/Support_BuildableSnow/blob/master/config.cs) for all of them. | See [`config.cs`](https://github.com/Electrk/Support_BuildableSnow/blob/master/config.cs). |
+| $BuildableSnow::DefaultDataBlock | The default datablock to create snow bricks as. | brick_snow_middle_middle_data |
