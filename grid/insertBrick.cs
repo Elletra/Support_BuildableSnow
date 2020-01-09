@@ -29,11 +29,6 @@ function fxDTSBrick::insertIntoSnowGrid ( %this, %gridX, %gridY, %gridZ )
 		return $BuildableSnow::Error::InvalidGridPos;
 	}
 
-	if ( !BuildableSnowBrickset.isMember (%this) )
-	{
-		BuildableSnowBrickset.add (%this);
-	}
-
 	// Basically how this add-on works is that it maintains a grid of vertices and a grid of bricks.
 	// Four vertices make up a "tile".  The "tiles" in this case are bricks.
 	//
@@ -52,6 +47,11 @@ function fxDTSBrick::insertIntoSnowGrid ( %this, %gridX, %gridY, %gridZ )
 	//
 	// See fxDTSBrick::setSnowVertices() and fxDTSBrick::updateSnow() to see how this works.
 	//
+
+	if ( !BuildableSnowBrickset.isMember (%this) )
+	{
+		BuildableSnowBrickset.add (%this);
+	}
 
 	//* The brick's position in the "tile" grid. *//
 
