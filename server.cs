@@ -23,6 +23,7 @@ exec ("./createBrick.cs");
 exec ("./snowVertices.cs");
 exec ("./updateSnow.cs");
 exec ("./raiseLower.cs");
+exec ("./package.cs");
 
 // Functions that only work in debug mode.
 exec ("./debug.cs");
