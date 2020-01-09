@@ -18,7 +18,7 @@ function fxDTSBrick::insertIntoSnowGrid ( %this, %gridX, %gridY, %gridZ )
 		return $BuildableSnow::Error::NotSnowBrick;
 	}
 
-	// We're already in the snow grid, no need to insert it again.
+	// If it's already in the snow grid, no need to insert it again.
 	if ( %this.isInSnowGrid )
 	{
 		return $BuildableSnow::Error::None;
