@@ -1,5 +1,8 @@
 // Bricks have obnoxiously long names because of an old method I'm not using anymore.
 // Also makes it easier to programmatically pick bricks based on their names/directions if need be.
+//
+// Bricks also purposely have blank categories and subcategories to prevent them from showing up in
+// the brick menu.  This add-on also prevents players from trying to get around this in package.cs.
 
 datablock fxDTSBrickData (brick_snow_empty_data)
 {
