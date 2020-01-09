@@ -213,3 +213,21 @@ If you want to enable debug mode and see error messages:
 | Variable | Description | Default Value |
 | -------- | ----------- | ------------- |
 | $BuildableSnow::DebugMode | Whether or not to print debug messages. | false |
+
+## <a name="custom-bricks">Custom Bricks
+
+If you want to make custom bricks for this mod, you'll have to make 16 bricks of all the same size.  They don't have to be the same size as the default ones, but they do have to be the same size as each other.
+
+![](https://i.imgur.com/0Ae57QH.png)
+
+These are the 16 required bricks.  You'll notice that #16 is above an empty stud.  This is the empty brick, which is what bricks get set to when all four vertex heights are `0`.
+
+Since Blockland has built-in, hardcoded effects for planting bricks, we have to use `setDataBlock()` for smooth, instant terrain sculpting.  This empty brick **_must be the same size as the rest of the bricks_**.
+
+![](https://i.imgur.com/JEOVhtM.png)
+
+The vertex data for each of the bricks.  Blue means a vertex height of `0` and red means a vertex height of `1`.
+
+![](https://i.imgur.com/fmb9Kn5.png)
+
+The names of all the types of bricks.  Note the direction of north.
