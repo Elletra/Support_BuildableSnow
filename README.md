@@ -139,7 +139,7 @@ Checks whether (x, y, z) is a valid grid position.
 
 #### <a name="api-get-snow-neighbor"></a> `fxDTSBrick::getSnowNeighbor (x, y, z);`
 
-Gets the brick at the position (x, y, z) relative to this brick, if any.
+Gets the brick at the grid position (x, y, z) relative to this brick, if any.
 
 **Returns**  `fxDTSBrick` or `-1`
 
@@ -149,7 +149,7 @@ If a brick cannot be found, it returns `-1`
 
 #### <a name="api-has-snow-neighbor"></a> `fxDTSBrick::hasSnowNeighbor (x, y, z);`
 
-Whether or not there's a brick at the position (x, y, z) relative to this brick.
+Whether or not there's a brick at the grid position (x, y, z) relative to this brick.
 
 **Returns**  `boolean`
 
@@ -157,7 +157,7 @@ Whether or not there's a brick at the position (x, y, z) relative to this brick.
 
 #### <a name="api-has-empty-snow-spot"></a> `fxDTSBrick::hasEmptySnowSpot (x, y, z);`
 
-Whether or not there's an empty spot at the position (x, y, z) relative to this brick.  "Empty spot" meaning either an empty snow brick, or the lack of a brick.
+Whether or not there's an empty spot at the grid position (x, y, z) relative to this brick.  "Empty spot" meaning either an empty snow brick, or the lack of a brick.
 
 **Returns**  `boolean`
 

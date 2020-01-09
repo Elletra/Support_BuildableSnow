@@ -1,4 +1,4 @@
-// Gets the brick at the position (x, y, z) relative to this brick, if any.
+// Gets the brick at the grid position (x, y, z) relative to this brick, if any.
 //
 // @param {integer} x
 // @param {integer} y
@@ -34,7 +34,7 @@ function fxDTSBrick::getSnowNeighbor ( %this, %x, %y, %z )
 	return -1;
 }
 
-// Whether or not there's a brick at the position (x, y, z) relative to this brick.
+// Whether or not there's a brick at the grid position (x, y, z) relative to this brick.
 //
 // @returns {boolean}
 //
@@ -43,7 +43,7 @@ function fxDTSBrick::hasSnowNeighbor ( %this, %x, %y, %z )
 	return isObject (%this.getSnowNeighbor (%x, %y, %z));
 }
 
-// Whether or not there's an empty spot at the position (x, y, z) relative to this brick.
+// Whether or not there's an empty spot at the grid position (x, y, z) relative to this brick.
 // "Empty spot" meaning either an empty snow brick, or the lack of a brick.
 //
 // @param {integer} x
