@@ -1,4 +1,4 @@
-$BuildableSnow::Version = "0.9.0";
+$BuildableSnow::Version = "1.0.0";
 
 
 // For use by other mods that require a minimum version of this mod to work.
