@@ -97,7 +97,7 @@ function fxDTSBrick::canUpdateSnow ( %this )
 	return %this.hasEmptySnowSpot (0, 0, 1)  ||  !isObject (%this.getSnowNeighbor (0, 0, 1));
 }
 
-// Determines the datablock this snow brick is going to be when it updates.
+// Determines the datablock this snow brick is going to be if/when it updates.
 //
 // @returns {fxDTSBrickData|-1} Returns -1 if there was an error.
 //

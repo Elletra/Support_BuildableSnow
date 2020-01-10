@@ -121,7 +121,7 @@ Whether or not this snow brick can change into its appropriate datablock.
 
 #### <a name="api-get-snow-update-datablock"></a> `fxDTSBrick::getSnowUpdateDataBlock ();`
 
-Determines the datablock this snow brick is going to be when it updates.
+Determines the datablock this snow brick is going to be if/when it updates.
 
 **Returns**  `fxDTSBrickData` or `-1`
 
