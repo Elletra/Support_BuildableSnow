@@ -115,15 +115,27 @@ Updates adjacent neighbor snow bricks.
 
 Gets a brick at grid (x, y, z).
 
+| Argument | Type |  Description  |
+| -------- | ---- | ------------- |
+| x | integer | Grid coordinate X. |
+| y | integer | Grid coordinate Y. |
+| z | integer | Grid coordinate Z. |
+
 **Returns**  `fxDTSBrick` or `-1`
 
-If a brick cannot be found, it returns `-1`
+If a brick cannot be found, it returns `-1`.
 
 ##
 
 #### <a name="api-grid-to-world"></a> `BuildableSnow_GridToWorld (x, y, z);`
 
 Converts a grid position to an actual world position.
+
+| Argument | Type |  Description  |
+| -------- | ---- | ------------- |
+| x | integer | Grid coordinate X. |
+| y | integer | Grid coordinate Y. |
+| z | integer | Grid coordinate Z. |
 
 **Returns**  `Vector3D`
 
@@ -133,6 +145,12 @@ Converts a grid position to an actual world position.
 
 Checks whether (x, y, z) is a valid grid position.
 
+| Argument | Type |  Description  |
+| -------- | ---- | ------------- |
+| x | integer | Grid coordinate X. |
+| y | integer | Grid coordinate Y. |
+| z | integer | Grid coordinate Z. |
+
 **Returns**  `boolean`
 
 ##
@@ -141,15 +159,27 @@ Checks whether (x, y, z) is a valid grid position.
 
 Gets the brick at the grid position (x, y, z) relative to this brick, if any.
 
+| Argument | Type |  Description  |
+| -------- | ---- | ------------- |
+| x | integer | Grid coordinate X relative to this brick. |
+| y | integer | Grid coordinate Y relative to this brick. |
+| z | integer | Grid coordinate Z relative to this brick. |
+
 **Returns**  `fxDTSBrick` or `-1`
 
-If a brick cannot be found, it returns `-1`
+If a brick cannot be found, it returns `-1`.
 
 ##
 
 #### <a name="api-has-snow-neighbor"></a> `fxDTSBrick::hasSnowNeighbor (x, y, z);`
 
 Whether or not there's a brick at the grid position (x, y, z) relative to this brick.
+
+| Argument | Type |  Description  |
+| -------- | ---- | ------------- |
+| x | integer | Grid coordinate X relative to this brick. |
+| y | integer | Grid coordinate Y relative to this brick. |
+| z | integer | Grid coordinate Z relative to this brick. |
 
 **Returns**  `boolean`
 
@@ -158,6 +188,12 @@ Whether or not there's a brick at the grid position (x, y, z) relative to this b
 #### <a name="api-has-empty-snow-spot"></a> `fxDTSBrick::hasEmptySnowSpot (x, y, z);`
 
 Whether or not there's an empty spot at the grid position (x, y, z) relative to this brick.  "Empty spot" meaning either an empty snow brick, or the lack of a brick.
+
+| Argument | Type |  Description  |
+| -------- | ---- | ------------- |
+| x | integer | Grid coordinate X relative to this brick. |
+| y | integer | Grid coordinate Y relative to this brick. |
+| z | integer | Grid coordinate Z relative to this brick. |
 
 **Returns**  `boolean`
 
@@ -185,7 +221,7 @@ If you want to change the snow brick's brick group, color, or angle ID:
 | -------- | ----------- | ------------- |
 | $BuildableSnow::SnowBrickGroup | The brick group to add all snow bricks to. | BrickGroup_888888 |
 | $BuildableSnow::SnowColorID | The color ID to set all snow bricks to. | The closest color to "1 1 1 1" |
-| $BuildableSnow::SnowAngleID | The angle ID to create all snow bricks with. | 3 |
+| $BuildableSnow::SnowAngleID | The angle ID to create all snow bricks with. | 0 |
 
 ##
 
@@ -212,7 +248,7 @@ If you want to make custom bricks for this mod, you'll have to make 16 bricks of
 
 These are the 16 required brick datablocks.  You'll notice that #16 is above an empty stud.  This is the empty brick, which is what bricks get set to when all four vertex heights are `0`.
 
-Since Blockland has built-in, hardcoded effects for planting bricks, we have to use `setDataBlock()` for smooth, instant terrain sculpting.  This empty brick **_must be the same size as the rest of the bricks_**.
+Since Blockland has built-in, hardcoded effects when planting bricks, we have to use `setDataBlock()` for smooth, instant terrain sculpting.  This empty brick **_must be the same size as the rest of the bricks_**.
 
 ![](https://i.imgur.com/JEOVhtM.png)
 
@@ -232,7 +268,7 @@ Once you have your bricks made, you'll have to set these in your mod to replace 
 | $BuildableSnow::CornerToAdapter_* | A quick way to get a respective adapter brick from corner vertices.  See [`config.cs`](https://github.com/Electrk/Support_BuildableSnow/blob/master/config.cs) for all of them. | See [`config.cs`](https://github.com/Electrk/Support_BuildableSnow/blob/master/config.cs). |
 | $BuildableSnow::DefaultDataBlock | The default datablock to create snow bricks as. | brick_snow_middle_middle_data |
 
-And set the following properties to each of the datablocks:
+And set the following properties for each of the datablocks:
 
 | Property | Type | Description |
 | -------- | ---- | ----------- |
@@ -251,6 +287,8 @@ Here are the six snow brick types:
 | adapter | Top left adapter, top right adapter, bottom left adapter, and bottom right adapter snow bricks. |
 | doubleRamp | "Top left bottom right" and "top right bottom left" snow bricks. |
 
+Also be sure to leave blank `category` and `subcategory` properties, as players are not meant to plant these bricks themselves.
+
 #
 
 #### <a name="custom-bricks-version-checking">Version Checking
@@ -259,7 +297,7 @@ If your mod requires a certain minimum version of this mod to work, you can use 
 
 #### <a name="custom-bricks-version-checking-require-min-version"></a> `BuildableSnow_RequireMinVersion (minVersion);`
 
-For use by other mods to require a minimum version of this mod for them to work.
+For use by other mods that require a minimum version of this mod to work.
 
 | Argument | Type |  Description  |
 | -------- | ---- | ------------- |
