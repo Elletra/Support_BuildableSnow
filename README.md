@@ -111,6 +111,24 @@ Updates adjacent neighbor snow bricks.
 
 ##
 
+#### <a name="api-can-update-snow"></a> `fxDTSBrick::canUpdateSnow ();`
+
+Whether or not this snow brick can change into its appropriate datablock.
+
+**Returns**  `boolean`
+
+##
+
+#### <a name="api-get-snow-update-datablock"></a> `fxDTSBrick::getSnowUpdateDataBlock ();`
+
+Determines the datablock this snow brick is going to be when it updates.
+
+**Returns**  `fxDTSBrickData` or `-1`
+
+Returns -1 if there was an error.
+
+##
+
 #### <a name="api-get-brick"></a> `BuildableSnow_GetBrick (x, y, z);`
 
 Gets a brick at grid (x, y, z).
