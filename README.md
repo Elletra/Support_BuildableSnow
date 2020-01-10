@@ -250,3 +250,21 @@ Here are the six snow brick types:
 | ramp | Top middle, middle left, middle right, and bottom middle snow bricks. |
 | adapter | Top left adapter, top right adapter, bottom left adapter, and bottom right adapter snow bricks. |
 | doubleRamp | "Top left bottom right" and "top right bottom left" snow bricks. |
+
+#
+
+#### <a name="custom-bricks-version-checking">Version Checking
+
+If your mod requires a certain minimum version of this mod to work, you can use the `BuildableSnow_RequireMinVersion()` function:
+
+#### <a name="custom-bricks-version-checking-require-min-version"></a> `BuildableSnow_RequireMinVersion (minVersion);`
+
+For use by other mods to require a minimum version of this mod for them to work.
+
+| Argument | Type |  Description  |
+| -------- | ---- | ------------- |
+| minVersion | SemanticVersion | A semantic version string of the minimum version of this mod required for your mod to work. |
+
+**Returns**  `boolean`
+
+Whether this mod is at least the minimum version required.

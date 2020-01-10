@@ -4,6 +4,7 @@ if ( !isFunction ("getClosestPaintColor") )
 }
 
 exec ("./lib/Support_CreateBrick.cs");
+exec ("./lib/Support_SemVer.cs");
 
 // ------------------------------------------------
 
@@ -24,6 +25,9 @@ exec ("./snowVertices.cs");
 exec ("./updateSnow.cs");
 exec ("./raiseLower.cs");
 exec ("./package.cs");
+
+// Code for checking the version of this mod.
+exec ("./version.cs");
 
 // Functions that only work in debug mode.
 exec ("./debug.cs");
