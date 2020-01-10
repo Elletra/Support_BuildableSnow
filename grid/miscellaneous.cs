@@ -32,7 +32,7 @@ function BuildableSnow_GridToWorld ( %x, %y, %z )
 
 	%worldX = -(%x * (%sizeX / 2));
 	%worldY =  (%y * (%sizeY / 2));
-	%worldZ =  (%z * (%sizeZ / 5)) + 0.3;
+	%worldZ =  (%z * (%sizeZ / 5)) + (0.1 * %sizeZ);
 
 	return %worldX @ " " @ %worldY @ " " @ %worldZ;
 }
