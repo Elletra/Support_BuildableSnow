@@ -25,7 +25,7 @@ function BuildableSnow_DestroyGrid ( %useAsync, %asyncCallback )
 	deleteVariables ("$BuildableSnow::Grid::*");
 }
 
-// Tick function for async grid destruction.  Internal use only (i.e. do not use this).
+// Tick function for async grid destruction.  Internal use only.  Do not use this function.
 //
 // @param {string} [asyncCallback]
 //
