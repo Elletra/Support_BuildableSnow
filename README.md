@@ -232,14 +232,6 @@ If you want to change the tick rates for async grid creation/destruction:
 | $BuildableSnow::CreateGridTickRate | The tick rate of async grid creation (in milliseconds). | 0 |
 | $BuildableSnow::DestroyGridTickRate | The tick rate of async grid destruction (in milliseconds). | 0 |
 
-##
-
-If you want to enable debug mode and see error messages:
-
-| Variable | Description | Default Value |
-| -------- | ----------- | ------------- |
-| $BuildableSnow::DebugMode | Whether or not to print debug messages. | false |
-
 ## <a name="custom-bricks">Custom Bricks
 
 If you want to make custom bricks for this mod, you'll have to make 16 bricks of all the same size.  They don't have to be the same size as the default ones, but they do have to be the same size as each other.
@@ -272,13 +264,13 @@ And set the following properties for each of the datablocks:
 
 | Property | Type | Description |
 | -------- | ---- | ----------- |
-| isSnowBrick | boolean | Whether or not this is a snow brick datablock (set to `true`). |
+| isSnowBrick | boolean | Whether or not this is a snow brick datablock (set this to `true`). |
 | snowBrickType | string | The type of snow brick this datablock is. |
 | snowVertices | BuildableSnowVertices | Four vertex heights that correspond to this datablock. |
 
 Here are the six snow brick types:
 
-| Type | Bricks |
+| Type | Bricks of this type |
 | ---- | ------ |
 | empty | Empty snow brick. |
 | middle | Middle snow brick. |
@@ -306,3 +298,13 @@ For use by other mods that require a minimum version of this mod to work.
 **Returns**  `boolean`
 
 Whether this mod is at least the minimum version required.
+
+#
+
+#### <a name="custom-bricks-debug-mode">Debug Mode
+
+If you want to enable debug mode and see error messages:
+
+| Variable | Description | Default Value |
+| -------- | ----------- | ------------- |
+| $BuildableSnow::DebugMode | Whether or not to print debug messages. | false |
