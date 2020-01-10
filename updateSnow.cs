@@ -46,47 +46,11 @@ function fxDTSBrick::updateSnow ( %this )
 		return $BuildableSnow::Error::NotInGrid;
 	}
 
-	%vertices = %this.getSnowVertices ();
+	%data = %this.getSnowUpdateDataBlock ();
 
-	%topLeft     = getWord (%vertices, 0);
-	%topRight    = getWord (%vertices, 1);
-	%bottomLeft  = getWord (%vertices, 2);
-	%bottomRight = getWord (%vertices, 3);
-
-	// Bricks can only change their datablock if there are no snow bricks above it, either because
-	// the above brick is invisible, or we're at the top of the grid.  This is to prevent snow
-	// bricks from creating unnatural configurations like two ramps stacked on top of each other.
-	//
-	// So even though the vertex data might be the same as a ramp, we prevent it from being one for
-	// aesthetic purposes.  The downside to this is that it can create a mismatch between the vertex
-	// data and the brick's actual datablock.
-	//
-	// (Though there is an exception, which is explained below.)
-
-	%aboveSnow = %this.getSnowNeighbor (0, 0, 1);
-	%canUpdate = %this.hasEmptySnowSpot (0, 0, 1)  ||  !isObject (%aboveSnow);
-
-	%data = $BuildableSnow::DataBlock_[1, 1, 1, 1];
-
-	// The exception to the above rule is when a brick is underneath a corner ramp.  As explained
-	// in the fxDTSBrick::snowAdapterCheck() method, we want bricks under corner ramps to become
-	// adapters because it looks nicer.  However, this can only happen if certain vertices are set
-	// to 0.
-	//
-	if ( isObject (%aboveSnow)  &&  %aboveSnow.dataBlock.snowBrickType $= "corner" )
+	if ( !isObject (%data)  ||  %data.getClassName () !$= "fxDTSBrickData" )
 	{
-		%aboveVertices = strReplace (%aboveSnow.getSnowVertices (), " ", "_");
-		%adapter       = $BuildableSnow::CornerToAdapter_[%aboveVertices];
-
-		if ( %this.snowAdapterCheck (%adapter) )
-		{
-			%data = %adapter;
-		}
-	}
-	else if ( %canUpdate )
-	{
-		// If there is no snow above, set the brick's datablock according to its vertex data.
-		%data = $BuildableSnow::DataBlock_[%topLeft, %topRight, %bottomLeft, %bottomRight];
+		return $BuildableSnow::Error::InvalidDataBlock;
 	}
 
 	//* Update brick datablock and surrounding neighbors if its datablock is going to change. *//
@@ -107,6 +71,67 @@ function fxDTSBrick::updateSnow ( %this )
 	%this.setRayCasting (%data !$= $BuildableSnow::DataBlock_[0, 0, 0, 0]);
 
 	return $BuildableSnow::Error::None;
+}
+
+function fxDTSBrick::canUpdateSnow ( %this )
+{
+	if ( !%this.dataBlock.isSnowBrick  ||  !%this.isInSnowGrid )
+	{
+		return false;
+	}
+
+	// Bricks can only change their datablock if there are no snow bricks above it, either because
+	// the above brick is invisible, or we're at the top of the grid.  This is to prevent snow
+	// bricks from creating unnatural configurations like two ramps stacked on top of each other.
+	//
+	// So even though the vertex data might be the same as a ramp, we prevent it from being one for
+	// aesthetic purposes.  The downside to this is that it can create a mismatch between the vertex
+	// data and the brick's actual datablock.
+	//
+	// (Though there is an exception, which is explained in fxDTSBrick::getSnowUpdateDataBlock)
+
+	return %this.hasEmptySnowSpot (0, 0, 1)  ||  !isObject (%this.getSnowNeighbor (0, 0, 1));
+}
+
+function fxDTSBrick::getSnowUpdateDataBlock ( %this )
+{
+	if ( !%this.dataBlock.isSnowBrick  ||  !%this.isInSnowGrid )
+	{
+		return -1;
+	}
+
+	%vertices = %this.getSnowVertices ();
+
+	%topLeft     = getWord (%vertices, 0);
+	%topRight    = getWord (%vertices, 1);
+	%bottomLeft  = getWord (%vertices, 2);
+	%bottomRight = getWord (%vertices, 3);
+
+	%aboveSnow = %this.getSnowNeighbor (0, 0, 1);
+
+	%data = $BuildableSnow::DataBlock_[1, 1, 1, 1];
+
+	// The exception to the rule described in fxDTSBrick::canUpdateSnow is when a brick is underneath
+	// a corner ramp.  As explained in the fxDTSBrick::snowAdapterCheck method, we want bricks under
+	// corner ramps to become adapters because it looks nicer.  However, this can only happen if
+	// certain vertices are set to 0.
+	if ( isObject (%aboveSnow)  &&  %aboveSnow.dataBlock.snowBrickType $= "corner" )
+	{
+		%aboveVertices = strReplace (%aboveSnow.getSnowVertices (), " ", "_");
+		%adapter       = $BuildableSnow::CornerToAdapter_[%aboveVertices];
+
+		if ( %this.snowAdapterCheck (%adapter) )
+		{
+			%data = %adapter;
+		}
+	}
+	else if ( %this.canUpdateSnow () )
+	{
+		// If there is no snow above, set the brick's datablock according to its vertex data.
+		%data = $BuildableSnow::DataBlock_[%topLeft, %topRight, %bottomLeft, %bottomRight];
+	}
+
+	return %data;
 }
 
 // Checks if a brick can be set to an adapter datablock, based on two adjacent neighbors relative
