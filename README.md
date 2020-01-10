@@ -227,7 +227,8 @@ Some functions return a `BuildableSnowError`, which will be one of the following
 | $BuildableSnow::Error::NotInGrid | The brick we're trying to operate on is not in the snow grid. |
 | $BuildableSnow::Error::HasSnowAbove | The brick we're trying to operate on has snow above it. |
 | $BuildableSnow::Error::NoSnowBelow | The brick we're trying to operate on doesn't have the supporting snow required. |
-| $BuildableSnow::Error::InvalidGridPos | The grid position we attempted to use is invalid. |
+| $BuildableSnow::Error::InvalidGridPos | The grid position we tried to use is invalid. |
+| $BuildableSnow::Error::InvalidDataBlock | The datablock we tried to use is invalid/nonexistent. |
 
 ## <a name="configurable-variables">Configurable Variables
 
