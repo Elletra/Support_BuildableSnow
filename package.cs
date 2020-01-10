@@ -1,3 +1,5 @@
+//* Prevent tricky players from planting snow bricks. *//
+
 package Support_BuildableSnow
 {
 	function serverCmdInstantUseBrick ( %client, %data )
@@ -23,5 +25,25 @@ package Support_BuildableSnow
 
 		Parent::serverCmdPlantBrick (%client);
 	}
+
+	function ndTrustCheckSelect ( %obj, %group2, %bl_id, %admin )
+	{
+		if ( isObject (%obj)  &&  %obj.dataBlock.isSnowBrick  &&  !%admin )
+		{
+			return false;
+		}
+
+		return Parent::ndTrustCheckSelect (%obj, %group2, %bl_id, %admin);
+	}
+
+	function ndTrustCheckModify ( %obj, %group2, %bl_id, %admin )
+	{
+		if ( isObject (%obj)  &&  %obj.dataBlock.isSnowBrick  &&  !%admin )
+		{
+			return false;
+		}
+
+		return Parent::ndTrustCheckModify (%obj, %group2, %bl_id, %admin);
+	}
 };
-activatePackage (Support_BuildableSnow);
+schedule (0, 0, activatePackage, Support_BuildableSnow);
