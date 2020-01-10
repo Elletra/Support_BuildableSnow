@@ -63,7 +63,12 @@ function fxDTSBrick::updateSnow ( %this )
 		// Update snow brick below (if there is one).
 		if ( %this.snowGridZ > 0 )
 		{
-			%this.getSnowNeighbor (0, 0, -1).updateSnow ();
+			%belowSnow = %this.getSnowNeighbor (0, 0, -1);
+
+			if ( isObject (%belowSnow) )
+			{
+				%belowSnow.updateSnow ();
+			}
 		}
 	}
 
