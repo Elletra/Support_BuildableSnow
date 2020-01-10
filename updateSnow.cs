@@ -103,8 +103,15 @@ function fxDTSBrick::canUpdateSnow ( %this )
 //
 function fxDTSBrick::getSnowUpdateDataBlock ( %this )
 {
-	if ( !%this.dataBlock.isSnowBrick  ||  !%this.isInSnowGrid )
+	if ( !%this.dataBlock.isSnowBrick )
 	{
+		BuildableSnow_DebugError ("Brick " @ %this.getID () @ " is not a snow brick!");
+		return -1;
+	}
+
+	if ( !%this.isInSnowGrid )
+	{
+		BuildableSnow_DebugError ("Brick " @ %this.getID () @ " is not in the snow grid!");
 		return -1;
 	}
 
